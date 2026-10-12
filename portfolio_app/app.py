@@ -22,13 +22,26 @@ NFL_README = os.path.join(os.path.dirname(__file__), "..", "projects", "nfl-anal
 GITHUB_USER = "gpbrou25-anal"
 THIS_REPO = "gp-portfolio"
 
+WALLPAPER_B64 = ""
+_wp_path = os.path.join(ASSETS, "wallpaper.jpg")
+if os.path.exists(_wp_path):
+    with open(_wp_path, "rb") as f:
+        WALLPAPER_B64 = base64.b64encode(f.read()).decode("ascii")
+
 # ---------------------------------------------------------------------------
 # Brand styling — dark navy / teal / gold, matching the A'eye visual identity
 # ---------------------------------------------------------------------------
-st.markdown("""
+_CSS = """
 <style>
 .stApp { background: #0a131c; color: #eaf2f6; }
-.block-container { max-width: 980px; padding-top: 2rem; }
+.block-container { max-width: 1400px; padding-top: 1.2rem; padding-left: 2.5rem; padding-right: 2.5rem; }
+.hero-banner {
+    position: relative; border-radius: 12px; overflow: hidden; margin-bottom: 1.5rem;
+    border: 1px solid #25394c; padding: 40px 40px 32px;
+    background:
+        linear-gradient(180deg, rgba(10,19,28,0.55) 0%, rgba(10,19,28,0.93) 85%),
+        url("data:image/jpeg;base64,__WALLPAPER_B64__") center 30% / cover no-repeat;
+}
 h1, h2, h3 { font-family: 'Georgia', serif; letter-spacing: 0.01em; }
 h1 { color: #eaf2f6 !important; }
 h2 { color: #eaf2f6 !important; border-bottom: 1px solid #25394c; padding-bottom: 10px; margin-top: 2.2rem !important; }
@@ -58,28 +71,28 @@ ul.analysis-arrows { list-style: none; margin: 0 0 14px 0; padding: 0; }
 ul.analysis-arrows li { position: relative; padding-left: 22px; margin-bottom: 9px; line-height: 1.55; color: #cdd9e1; }
 ul.analysis-arrows li::before { content: "→"; position: absolute; left: 0; color: #d9b968; }
 </style>
-""", unsafe_allow_html=True)
+"""
+st.markdown(_CSS.replace("__WALLPAPER_B64__", WALLPAPER_B64), unsafe_allow_html=True)
 
 # ---------------------------------------------------------------------------
 # Hero
 # ---------------------------------------------------------------------------
-col_logo, col_title = st.columns([1, 5])
-with col_logo:
-    st.image(os.path.join(ASSETS, "logo.png"), use_container_width=True)
-with col_title:
-    st.markdown('<div class="eyebrow">Match &amp; data analyst</div>', unsafe_allow_html=True)
-    st.markdown("# Georges-Patrick Brou")
-    st.markdown(
-        '<p class="sub">MSc Big Data &amp; Analytics student who also breaks down match footage in '
-        'Wyscout — set-piece patterns, player roles, zone occupation — and backs that reading with '
-        'real data work in Python and SQL.</p>',
-        unsafe_allow_html=True,
-    )
-    st.markdown(
-        '<div class="meta-row">MSc <b>Big Data &amp; Analytics</b> &nbsp;·&nbsp; Football <b>Coach</b> '
-        '&nbsp;·&nbsp; <b>Wyscout</b> match analysis &nbsp;·&nbsp; <b>Barcelona</b>, Spain</div>',
-        unsafe_allow_html=True,
-    )
+with open(os.path.join(ASSETS, "logo.png"), "rb") as f:
+    _logo_b64 = base64.b64encode(f.read()).decode("ascii")
+
+st.markdown(
+    '<div class="hero-banner">'
+    f'<img src="data:image/png;base64,{_logo_b64}" style="height:96px;width:auto;margin-bottom:18px;" alt="A\'eye logo">'
+    '<div class="eyebrow">Match &amp; data analyst</div>'
+    '<h1 style="font-size:46px;margin:6px 0 14px;">Georges-Patrick Brou</h1>'
+    '<p class="sub">MSc Big Data &amp; Analytics student who also breaks down match footage in '
+    'Wyscout — set-piece patterns, player roles, zone occupation — and backs that reading with '
+    'real data work in Python and SQL.</p>'
+    '<div class="meta-row">MSc <b>Big Data &amp; Analytics</b> &nbsp;·&nbsp; Football <b>Coach</b> '
+    '&nbsp;·&nbsp; <b>Wyscout</b> match analysis &nbsp;·&nbsp; <b>Barcelona</b>, Spain</div>'
+    '</div>',
+    unsafe_allow_html=True,
+)
 
 c1, c2 = st.columns([1, 1])
 with c1:
