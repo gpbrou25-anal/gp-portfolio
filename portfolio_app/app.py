@@ -12,7 +12,7 @@ import os
 import re
 import streamlit as st
 
-st.set_page_config(page_title="Georges-Patrick Brou — Portfolio", page_icon="🎯", layout="wide")
+st.set_page_config(page_title="Georges-Patrick Brou's Portfolio", page_icon="🎯", layout="wide")
 
 ASSETS = os.path.join(os.path.dirname(__file__), "assets")
 VIDEO_DIR = os.path.join(ASSETS, "videos")
@@ -175,7 +175,7 @@ def show_clips(group):
     clips = yt_by_group.get(group, [])
     if not clips:
         st.caption(
-            f"No clip yet for this one — add a line to `portfolio_app/assets/videos/youtube_links.txt` "
+            f"No clip yet for this one. Add a line to `portfolio_app/assets/videos/youtube_links.txt` "
             f"as `{group} | Title | https://youtu.be/...`."
         )
         return
@@ -233,7 +233,7 @@ show_clips("corners")
 # --- Analysis 2: Brighton 3-0 Arsenal, the first goal -----------------------
 st.markdown(
     '<div class="analysis-block">'
-    "<h3>Brighton 3-0 Arsenal — the first goal</h3>"
+    "<h3>Brighton 3-0 Arsenal: the first goal</h3>"
     '<div class="analysis-score">MATCHWEEK 5 · PREMIER LEAGUE 2026/27 · BRIGHTON 3–0 ARSENAL</div>'
     "<p>Arsenal had just survived their hardest 20 minutes against Brighton. Then one patient "
     "Brighton possession undid it.</p>"
@@ -329,8 +329,10 @@ def show_readme(title, path, repo_link, figures_dir=None):
                 content = re.sub(r"!\[([^\]]*)\]\(([^)]*)\)", _sub, content)
             else:
                 content = re.sub(r"!\[[^\]]*\]\([^)]*\)", "", content)
-            # drop markdown horizontal-rule dividers (---) — they render as visible lines
+            # drop markdown horizontal-rule dividers (---): they render as visible lines
             content = re.sub(r"(?m)^\s*-{3,}\s*$", "", content)
+            # no em-dashes anywhere: swap for a colon, reads fine in headers and asides alike
+            content = re.sub(r"\s*—\s*", ": ", content)
             st.markdown(f'<div class="readme-box">\n\n{content}\n\n</div>', unsafe_allow_html=True)
         else:
             st.caption("README not found locally yet.")
@@ -349,7 +351,7 @@ with st.expander("NFL Performance Analytics", expanded=False):
         "app, and turned it into the carousel above.</p>"
         '<div class="analysis-sub">What\'s in it</div>'
         + bullets([
-            "Teams that changed coaches this offseason — who's actually winning with the new staff, "
+            "Teams that changed coaches this offseason, who's actually winning with the new staff, "
             "who isn't",
             "Teams playing well right now: explosive run games, defenses taking the ball away",
             "Teams showing both sides: strong in one area, exposed in the other",
@@ -364,7 +366,7 @@ with st.expander("NFL Performance Analytics", expanded=False):
     if os.path.exists(_diag_path):
         st.image(_diag_path, use_container_width=True)
         st.caption(
-            "The full diagnostic behind the carousel — point differential, defensive touchdowns, "
+            "The full diagnostic behind the carousel: point differential, defensive touchdowns, "
             "offense/defense quadrants and more, all 32 teams, refreshed every week. There's a lot "
             "more to explore here as the season goes on, this overview is just the entry point."
         )
