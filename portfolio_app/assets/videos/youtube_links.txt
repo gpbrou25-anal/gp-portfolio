@@ -1,3 +1,4 @@
 # One YouTube link per line. Lines starting with # are ignored.
 # Optional title before the link, separated by "|":
-# Near post corner breakdown | https://youtu.be/XXXXXXXXXXX
+Near post corner breakdown | https://youtu.be/zA4ZOZzPfME
+Far post corner breakdown | https://youtu.be/4Z6jQWe7L1k
