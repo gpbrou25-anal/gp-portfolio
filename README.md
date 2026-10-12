@@ -1,7 +1,7 @@
 # Georges-Patrick Brou — Portfolio
 
-Real, deployable portfolio showing match analysis (Wyscout), NFL performance analytics, and the
-tools built to produce both. Built for linking directly from a CV.
+Three things: video breakdown (Wyscout match/set-piece analysis), the NFL carousel deck, and the
+real analysis repos behind both on GitHub. Built for linking directly from a CV.
 
 ## Run locally
 
@@ -24,16 +24,13 @@ Every push to `main` redeploys automatically — no need to repeat the steps abo
 ## Adding content
 
 - **Video clips**: drop `.mp4`/`.mov`/`.webm` files into `portfolio_app/assets/videos/`, commit and
-  push. They show up in the Match & Set-Piece Analysis section automatically.
-- **CV**: add a PDF at `portfolio_app/assets/CV.pdf` and a download button appears in the header
-  automatically.
-- **New carousel/project images**: drop images into `portfolio_app/assets/` and reference them in
-  `portfolio_app/app.py`.
+  push. They show up in the Video Breakdown section automatically.
+- **Carousel slides**: drop image files into `portfolio_app/assets/carousel/`, commit and push. They
+  show up in the Carousel section automatically, in alphabetical order, with prev/next navigation.
 
 ## Structure
 
 ```
 portfolio_app/app.py          the portfolio itself
 projects/nfl-analytics/       full NFL analytics pipeline + Streamlit dashboards (real source)
-projects/job-application-tailor/   the sports job application tailor tool (real source)
 ```
