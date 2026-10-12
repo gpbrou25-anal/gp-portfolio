@@ -89,13 +89,21 @@ with open(os.path.join(ASSETS, "logo.png"), "rb") as f:
 st.markdown(
     '<div class="hero-banner">'
     f'<img src="data:image/png;base64,{_logo_b64}" style="height:96px;width:auto;margin-bottom:18px;" alt="A\'eye logo">'
-    '<div class="eyebrow">Match &amp; data analyst</div>'
+    '<div class="eyebrow">Multisport analyst</div>'
     '<h1 style="font-size:46px;margin:6px 0 14px;">Georges-Patrick Brou</h1>'
-    '<p class="sub">MSc Big Data &amp; Analytics student who also breaks down match footage in '
-    'Wyscout — set-piece patterns, player roles, zone occupation — and backs that reading with '
-    'real data work in Python and SQL.</p>'
-    '<div class="meta-row">MSc <b>Big Data &amp; Analytics</b> &nbsp;·&nbsp; Football <b>Coach</b> '
-    '&nbsp;·&nbsp; <b>Wyscout</b> match analysis &nbsp;·&nbsp; <b>Barcelona</b>, Spain</div>'
+    '<p class="sub">Master\'s student in Sport Management and Legal Skills at ISDE Barcelona, built in '
+    'partnership with Barça Innovation Hub, on top of an MSc in Big Data &amp; Analytics. Sport is the '
+    'thread through both, I\'m genuinely passionate about more than one of them, and I\'m building real '
+    'skills in data analysis, performance scouting, and video analysis to go with it. What I bring is '
+    'an eye for detail and for the pattern other people miss. I\'m looking for an environment where '
+    'that\'s actually useful: adding value for a team, finding solutions, helping improve recruitment '
+    'and performance, and sharpening what I know inside a structured setup.</p>'
+    '<p class="sub">Below is my portfolio, bringing together everything I\'ve worked on so far. Enjoy '
+    'a quick look at how I see sport, I\'d genuinely like the chance to talk more and go deeper into '
+    'it.</p>'
+    '<div class="meta-row">MSc <b>Big Data &amp; Analytics</b> &nbsp;·&nbsp; Sport Management &amp; '
+    'Legal Skills, <b>ISDE Barcelona</b> &nbsp;·&nbsp; <b>Barça Innovation Hub</b> &nbsp;·&nbsp; '
+    '<b>Barcelona</b>, Spain</div>'
     '</div>',
     unsafe_allow_html=True,
 )
