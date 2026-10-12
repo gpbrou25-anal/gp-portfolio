@@ -1,0 +1,1353 @@
+{
+  "min_games": 4,
+  "max_games": 5,
+  "generated_note": "Standings through 5 game(s) for the furthest-along team, as few as 4 for others.",
+  "boards": {
+    "qb_epa": {
+      "metric": "EPA per dropback",
+      "table": [
+        {
+          "rank": 1,
+          "team": "SF",
+          "epa_per_dropback": 0.566,
+          "cpoe": 4.73
+        },
+        {
+          "rank": 2,
+          "team": "BAL",
+          "epa_per_dropback": 0.351,
+          "cpoe": 7.05
+        },
+        {
+          "rank": 3,
+          "team": "JAX",
+          "epa_per_dropback": 0.269,
+          "cpoe": 7.15
+        },
+        {
+          "rank": 4,
+          "team": "BUF",
+          "epa_per_dropback": 0.268,
+          "cpoe": 2.15
+        },
+        {
+          "rank": 5,
+          "team": "DET",
+          "epa_per_dropback": 0.242,
+          "cpoe": 1.29
+        },
+        {
+          "rank": 6,
+          "team": "CAR",
+          "epa_per_dropback": 0.23,
+          "cpoe": 5.54
+        },
+        {
+          "rank": 7,
+          "team": "KC",
+          "epa_per_dropback": 0.205,
+          "cpoe": -1.65
+        },
+        {
+          "rank": 8,
+          "team": "DAL",
+          "epa_per_dropback": 0.194,
+          "cpoe": 3.66
+        },
+        {
+          "rank": 9,
+          "team": "SEA",
+          "epa_per_dropback": 0.193,
+          "cpoe": 7.38
+        },
+        {
+          "rank": 10,
+          "team": "NE",
+          "epa_per_dropback": 0.174,
+          "cpoe": 1.12
+        },
+        {
+          "rank": 11,
+          "team": "CIN",
+          "epa_per_dropback": 0.147,
+          "cpoe": 3.82
+        },
+        {
+          "rank": 12,
+          "team": "LV",
+          "epa_per_dropback": 0.141,
+          "cpoe": 2.65
+        },
+        {
+          "rank": 13,
+          "team": "GB",
+          "epa_per_dropback": 0.111,
+          "cpoe": -6.52
+        },
+        {
+          "rank": 14,
+          "team": "HOU",
+          "epa_per_dropback": 0.11,
+          "cpoe": 6.58
+        },
+        {
+          "rank": 15,
+          "team": "NYG",
+          "epa_per_dropback": 0.098,
+          "cpoe": -2.8
+        },
+        {
+          "rank": 16,
+          "team": "WAS",
+          "epa_per_dropback": 0.065,
+          "cpoe": -0.75
+        },
+        {
+          "rank": 17,
+          "team": "LA",
+          "epa_per_dropback": 0.058,
+          "cpoe": NaN
+        },
+        {
+          "rank": 18,
+          "team": "CHI",
+          "epa_per_dropback": 0.057,
+          "cpoe": 4.48
+        },
+        {
+          "rank": 19,
+          "team": "CLE",
+          "epa_per_dropback": 0.055,
+          "cpoe": -2.29
+        },
+        {
+          "rank": 20,
+          "team": "NYJ",
+          "epa_per_dropback": 0.037,
+          "cpoe": 8.2
+        },
+        {
+          "rank": 21,
+          "team": "DEN",
+          "epa_per_dropback": -0.015,
+          "cpoe": -5.08
+        },
+        {
+          "rank": 22,
+          "team": "ARI",
+          "epa_per_dropback": -0.027,
+          "cpoe": 4.89
+        },
+        {
+          "rank": 23,
+          "team": "NO",
+          "epa_per_dropback": -0.034,
+          "cpoe": 3.73
+        },
+        {
+          "rank": 24,
+          "team": "MIN",
+          "epa_per_dropback": -0.034,
+          "cpoe": -3.06
+        },
+        {
+          "rank": 25,
+          "team": "PHI",
+          "epa_per_dropback": -0.083,
+          "cpoe": -3.22
+        },
+        {
+          "rank": 26,
+          "team": "PIT",
+          "epa_per_dropback": -0.102,
+          "cpoe": -2.99
+        },
+        {
+          "rank": 27,
+          "team": "MIA",
+          "epa_per_dropback": -0.121,
+          "cpoe": -5.08
+        },
+        {
+          "rank": 28,
+          "team": "TB",
+          "epa_per_dropback": -0.14,
+          "cpoe": 1.68
+        },
+        {
+          "rank": 29,
+          "team": "LAC",
+          "epa_per_dropback": -0.151,
+          "cpoe": -3.5
+        },
+        {
+          "rank": 30,
+          "team": "IND",
+          "epa_per_dropback": -0.157,
+          "cpoe": -0.81
+        },
+        {
+          "rank": 31,
+          "team": "TEN",
+          "epa_per_dropback": -0.179,
+          "cpoe": -1.56
+        },
+        {
+          "rank": 32,
+          "team": "ATL",
+          "epa_per_dropback": -0.198,
+          "cpoe": -8.22
+        }
+      ],
+      "best_team": "SF",
+      "worst_team": "ATL",
+      "best_player": {
+        "player": "B.Purdy",
+        "value": "112"
+      },
+      "worst_player": {
+        "player": "M.Penix",
+        "value": "47"
+      }
+    },
+    "ol_hits_allowed": {
+      "metric": "QB hits allowed",
+      "table": [
+        {
+          "rank": 1,
+          "team": "SF",
+          "qb_hits_allowed": 11,
+          "sacks_allowed_by_OL": 0
+        },
+        {
+          "rank": 2,
+          "team": "ATL",
+          "qb_hits_allowed": 12,
+          "sacks_allowed_by_OL": 8
+        },
+        {
+          "rank": 3,
+          "team": "DEN",
+          "qb_hits_allowed": 13,
+          "sacks_allowed_by_OL": 5
+        },
+        {
+          "rank": 4,
+          "team": "BAL",
+          "qb_hits_allowed": 13,
+          "sacks_allowed_by_OL": 7
+        },
+        {
+          "rank": 5,
+          "team": "KC",
+          "qb_hits_allowed": 21,
+          "sacks_allowed_by_OL": 6
+        },
+        {
+          "rank": 6,
+          "team": "BUF",
+          "qb_hits_allowed": 21,
+          "sacks_allowed_by_OL": 9
+        },
+        {
+          "rank": 7,
+          "team": "MIA",
+          "qb_hits_allowed": 21,
+          "sacks_allowed_by_OL": 14
+        },
+        {
+          "rank": 8,
+          "team": "SEA",
+          "qb_hits_allowed": 23,
+          "sacks_allowed_by_OL": 6
+        },
+        {
+          "rank": 9,
+          "team": "TEN",
+          "qb_hits_allowed": 23,
+          "sacks_allowed_by_OL": 10
+        },
+        {
+          "rank": 10,
+          "team": "ARI",
+          "qb_hits_allowed": 24,
+          "sacks_allowed_by_OL": 7
+        },
+        {
+          "rank": 11,
+          "team": "MIN",
+          "qb_hits_allowed": 24,
+          "sacks_allowed_by_OL": 15
+        },
+        {
+          "rank": 12,
+          "team": "NE",
+          "qb_hits_allowed": 25,
+          "sacks_allowed_by_OL": 11
+        },
+        {
+          "rank": 13,
+          "team": "DET",
+          "qb_hits_allowed": 26,
+          "sacks_allowed_by_OL": 8
+        },
+        {
+          "rank": 14,
+          "team": "PHI",
+          "qb_hits_allowed": 26,
+          "sacks_allowed_by_OL": 13
+        },
+        {
+          "rank": 15,
+          "team": "JAX",
+          "qb_hits_allowed": 27,
+          "sacks_allowed_by_OL": 10
+        },
+        {
+          "rank": 16,
+          "team": "CHI",
+          "qb_hits_allowed": 27,
+          "sacks_allowed_by_OL": 11
+        },
+        {
+          "rank": 17,
+          "team": "IND",
+          "qb_hits_allowed": 27,
+          "sacks_allowed_by_OL": 9
+        },
+        {
+          "rank": 18,
+          "team": "HOU",
+          "qb_hits_allowed": 28,
+          "sacks_allowed_by_OL": 14
+        },
+        {
+          "rank": 19,
+          "team": "TB",
+          "qb_hits_allowed": 28,
+          "sacks_allowed_by_OL": 17
+        },
+        {
+          "rank": 20,
+          "team": "LA",
+          "qb_hits_allowed": 29,
+          "sacks_allowed_by_OL": 6
+        },
+        {
+          "rank": 21,
+          "team": "CAR",
+          "qb_hits_allowed": 30,
+          "sacks_allowed_by_OL": 10
+        },
+        {
+          "rank": 22,
+          "team": "NYJ",
+          "qb_hits_allowed": 30,
+          "sacks_allowed_by_OL": 16
+        },
+        {
+          "rank": 23,
+          "team": "LAC",
+          "qb_hits_allowed": 30,
+          "sacks_allowed_by_OL": 12
+        },
+        {
+          "rank": 24,
+          "team": "DAL",
+          "qb_hits_allowed": 30,
+          "sacks_allowed_by_OL": 6
+        },
+        {
+          "rank": 25,
+          "team": "NYG",
+          "qb_hits_allowed": 32,
+          "sacks_allowed_by_OL": 13
+        },
+        {
+          "rank": 26,
+          "team": "PIT",
+          "qb_hits_allowed": 33,
+          "sacks_allowed_by_OL": 14
+        },
+        {
+          "rank": 27,
+          "team": "WAS",
+          "qb_hits_allowed": 34,
+          "sacks_allowed_by_OL": 10
+        },
+        {
+          "rank": 28,
+          "team": "CLE",
+          "qb_hits_allowed": 35,
+          "sacks_allowed_by_OL": 19
+        },
+        {
+          "rank": 29,
+          "team": "LV",
+          "qb_hits_allowed": 35,
+          "sacks_allowed_by_OL": 8
+        },
+        {
+          "rank": 30,
+          "team": "CIN",
+          "qb_hits_allowed": 36,
+          "sacks_allowed_by_OL": 9
+        },
+        {
+          "rank": 31,
+          "team": "NO",
+          "qb_hits_allowed": 36,
+          "sacks_allowed_by_OL": 13
+        },
+        {
+          "rank": 32,
+          "team": "GB",
+          "qb_hits_allowed": 37,
+          "sacks_allowed_by_OL": 10
+        }
+      ],
+      "best_team": "SF",
+      "worst_team": "GB"
+    },
+    "rb_consistency": {
+      "metric": "% carries gaining 4+ yards",
+      "table": [
+        {
+          "rank": 1,
+          "team": "LA",
+          "pct_carries_4plus_yards": 56.0,
+          "explosive_run_rate_10plus": 11.0
+        },
+        {
+          "rank": 2,
+          "team": "ATL",
+          "pct_carries_4plus_yards": 54.8,
+          "explosive_run_rate_10plus": 11.1
+        },
+        {
+          "rank": 3,
+          "team": "TB",
+          "pct_carries_4plus_yards": 52.6,
+          "explosive_run_rate_10plus": 9.8
+        },
+        {
+          "rank": 4,
+          "team": "BAL",
+          "pct_carries_4plus_yards": 50.8,
+          "explosive_run_rate_10plus": 15.6
+        },
+        {
+          "rank": 5,
+          "team": "PIT",
+          "pct_carries_4plus_yards": 50.0,
+          "explosive_run_rate_10plus": 10.8
+        },
+        {
+          "rank": 6,
+          "team": "CHI",
+          "pct_carries_4plus_yards": 48.9,
+          "explosive_run_rate_10plus": 11.8
+        },
+        {
+          "rank": 7,
+          "team": "SEA",
+          "pct_carries_4plus_yards": 48.2,
+          "explosive_run_rate_10plus": 10.0
+        },
+        {
+          "rank": 8,
+          "team": "BUF",
+          "pct_carries_4plus_yards": 47.6,
+          "explosive_run_rate_10plus": 18.1
+        },
+        {
+          "rank": 9,
+          "team": "KC",
+          "pct_carries_4plus_yards": 47.4,
+          "explosive_run_rate_10plus": 14.9
+        },
+        {
+          "rank": 10,
+          "team": "SF",
+          "pct_carries_4plus_yards": 47.3,
+          "explosive_run_rate_10plus": 16.4
+        },
+        {
+          "rank": 11,
+          "team": "CIN",
+          "pct_carries_4plus_yards": 47.3,
+          "explosive_run_rate_10plus": 10.0
+        },
+        {
+          "rank": 12,
+          "team": "MIN",
+          "pct_carries_4plus_yards": 46.9,
+          "explosive_run_rate_10plus": 8.4
+        },
+        {
+          "rank": 13,
+          "team": "ARI",
+          "pct_carries_4plus_yards": 46.5,
+          "explosive_run_rate_10plus": 5.9
+        },
+        {
+          "rank": 14,
+          "team": "DET",
+          "pct_carries_4plus_yards": 45.8,
+          "explosive_run_rate_10plus": 12.5
+        },
+        {
+          "rank": 15,
+          "team": "CAR",
+          "pct_carries_4plus_yards": 45.2,
+          "explosive_run_rate_10plus": 12.9
+        },
+        {
+          "rank": 16,
+          "team": "DEN",
+          "pct_carries_4plus_yards": 44.8,
+          "explosive_run_rate_10plus": 6.9
+        },
+        {
+          "rank": 17,
+          "team": "NYG",
+          "pct_carries_4plus_yards": 44.8,
+          "explosive_run_rate_10plus": 7.0
+        },
+        {
+          "rank": 18,
+          "team": "NE",
+          "pct_carries_4plus_yards": 44.4,
+          "explosive_run_rate_10plus": 13.2
+        },
+        {
+          "rank": 19,
+          "team": "IND",
+          "pct_carries_4plus_yards": 44.4,
+          "explosive_run_rate_10plus": 11.9
+        },
+        {
+          "rank": 20,
+          "team": "NYJ",
+          "pct_carries_4plus_yards": 44.4,
+          "explosive_run_rate_10plus": 10.3
+        },
+        {
+          "rank": 21,
+          "team": "LAC",
+          "pct_carries_4plus_yards": 44.2,
+          "explosive_run_rate_10plus": 10.6
+        },
+        {
+          "rank": 22,
+          "team": "DAL",
+          "pct_carries_4plus_yards": 43.9,
+          "explosive_run_rate_10plus": 8.4
+        },
+        {
+          "rank": 23,
+          "team": "MIA",
+          "pct_carries_4plus_yards": 43.8,
+          "explosive_run_rate_10plus": 15.4
+        },
+        {
+          "rank": 24,
+          "team": "PHI",
+          "pct_carries_4plus_yards": 43.7,
+          "explosive_run_rate_10plus": 7.6
+        },
+        {
+          "rank": 25,
+          "team": "WAS",
+          "pct_carries_4plus_yards": 43.4,
+          "explosive_run_rate_10plus": 11.7
+        },
+        {
+          "rank": 26,
+          "team": "JAX",
+          "pct_carries_4plus_yards": 43.0,
+          "explosive_run_rate_10plus": 11.9
+        },
+        {
+          "rank": 27,
+          "team": "CLE",
+          "pct_carries_4plus_yards": 41.7,
+          "explosive_run_rate_10plus": 9.2
+        },
+        {
+          "rank": 28,
+          "team": "NO",
+          "pct_carries_4plus_yards": 40.5,
+          "explosive_run_rate_10plus": 5.2
+        },
+        {
+          "rank": 29,
+          "team": "LV",
+          "pct_carries_4plus_yards": 39.5,
+          "explosive_run_rate_10plus": 6.2
+        },
+        {
+          "rank": 30,
+          "team": "GB",
+          "pct_carries_4plus_yards": 39.4,
+          "explosive_run_rate_10plus": 8.5
+        },
+        {
+          "rank": 31,
+          "team": "TEN",
+          "pct_carries_4plus_yards": 38.9,
+          "explosive_run_rate_10plus": 8.3
+        },
+        {
+          "rank": 32,
+          "team": "HOU",
+          "pct_carries_4plus_yards": 37.4,
+          "explosive_run_rate_10plus": 8.7
+        }
+      ],
+      "best_team": "LA",
+      "worst_team": "HOU",
+      "best_player": {
+        "player": "K.Williams",
+        "value": "54"
+      },
+      "worst_player": {
+        "player": "D.Montgomery",
+        "value": "52"
+      }
+    },
+    "wr_separation": {
+      "metric": "Avg. separation (yards)",
+      "table": [
+        {
+          "rank": 1,
+          "team": "BUF",
+          "avg_separation": 2.44,
+          "avg_yac_above_expected": 0.55
+        },
+        {
+          "rank": 2,
+          "team": "IND",
+          "avg_separation": 2.38,
+          "avg_yac_above_expected": 0.28
+        },
+        {
+          "rank": 3,
+          "team": "DET",
+          "avg_separation": 2.36,
+          "avg_yac_above_expected": -0.26
+        },
+        {
+          "rank": 4,
+          "team": "NYJ",
+          "avg_separation": 2.27,
+          "avg_yac_above_expected": -0.26
+        },
+        {
+          "rank": 5,
+          "team": "DAL",
+          "avg_separation": 2.25,
+          "avg_yac_above_expected": -0.12
+        },
+        {
+          "rank": 6,
+          "team": "TB",
+          "avg_separation": 2.24,
+          "avg_yac_above_expected": 0.01
+        },
+        {
+          "rank": 7,
+          "team": "HOU",
+          "avg_separation": 2.19,
+          "avg_yac_above_expected": 0.07
+        },
+        {
+          "rank": 8,
+          "team": "LAC",
+          "avg_separation": 2.18,
+          "avg_yac_above_expected": 0.06
+        },
+        {
+          "rank": 9,
+          "team": "GB",
+          "avg_separation": 2.16,
+          "avg_yac_above_expected": 1.51
+        },
+        {
+          "rank": 10,
+          "team": "SEA",
+          "avg_separation": 2.15,
+          "avg_yac_above_expected": 0.77
+        },
+        {
+          "rank": 11,
+          "team": "CLE",
+          "avg_separation": 2.15,
+          "avg_yac_above_expected": 0.94
+        },
+        {
+          "rank": 12,
+          "team": "CAR",
+          "avg_separation": 2.14,
+          "avg_yac_above_expected": 0.19
+        },
+        {
+          "rank": 13,
+          "team": "CHI",
+          "avg_separation": 2.14,
+          "avg_yac_above_expected": 0.31
+        },
+        {
+          "rank": 14,
+          "team": "KC",
+          "avg_separation": 2.14,
+          "avg_yac_above_expected": 1.59
+        },
+        {
+          "rank": 15,
+          "team": "ARI",
+          "avg_separation": 2.08,
+          "avg_yac_above_expected": -0.08
+        },
+        {
+          "rank": 16,
+          "team": "DEN",
+          "avg_separation": 2.07,
+          "avg_yac_above_expected": -0.14
+        },
+        {
+          "rank": 17,
+          "team": "PHI",
+          "avg_separation": 2.07,
+          "avg_yac_above_expected": 0.35
+        },
+        {
+          "rank": 18,
+          "team": "NO",
+          "avg_separation": 2.06,
+          "avg_yac_above_expected": -0.25
+        },
+        {
+          "rank": 19,
+          "team": "JAX",
+          "avg_separation": 2.04,
+          "avg_yac_above_expected": -0.15
+        },
+        {
+          "rank": 20,
+          "team": "BAL",
+          "avg_separation": 1.93,
+          "avg_yac_above_expected": 0.81
+        },
+        {
+          "rank": 21,
+          "team": "MIA",
+          "avg_separation": 1.93,
+          "avg_yac_above_expected": 0.54
+        },
+        {
+          "rank": 22,
+          "team": "PIT",
+          "avg_separation": 1.89,
+          "avg_yac_above_expected": 0.46
+        },
+        {
+          "rank": 23,
+          "team": "CIN",
+          "avg_separation": 1.87,
+          "avg_yac_above_expected": 0.42
+        },
+        {
+          "rank": 24,
+          "team": "NYG",
+          "avg_separation": 1.84,
+          "avg_yac_above_expected": -0.34
+        },
+        {
+          "rank": 25,
+          "team": "TEN",
+          "avg_separation": 1.8,
+          "avg_yac_above_expected": 0.03
+        },
+        {
+          "rank": 26,
+          "team": "NE",
+          "avg_separation": 1.75,
+          "avg_yac_above_expected": 0.19
+        },
+        {
+          "rank": 27,
+          "team": "MIN",
+          "avg_separation": 1.74,
+          "avg_yac_above_expected": 0.35
+        },
+        {
+          "rank": 28,
+          "team": "SF",
+          "avg_separation": 1.62,
+          "avg_yac_above_expected": 0.79
+        },
+        {
+          "rank": 29,
+          "team": "WAS",
+          "avg_separation": 1.61,
+          "avg_yac_above_expected": -0.11
+        },
+        {
+          "rank": 30,
+          "team": "LV",
+          "avg_separation": 1.41,
+          "avg_yac_above_expected": -0.18
+        },
+        {
+          "rank": 31,
+          "team": "ATL",
+          "avg_separation": 0.95,
+          "avg_yac_above_expected": 0.67
+        },
+        {
+          "rank": 32,
+          "team": "LA",
+          "avg_separation": 0.0,
+          "avg_yac_above_expected": 0.0
+        }
+      ],
+      "best_team": "BUF",
+      "worst_team": "LA",
+      "best_player": {
+        "player": "Khalil Shakir",
+        "value": "23"
+      },
+      "worst_player": {
+        "player": "K.Williams",
+        "value": "25"
+      }
+    },
+    "secondary_yards_allowed": {
+      "metric": "Yards allowed per target",
+      "table": [
+        {
+          "rank": 1,
+          "team": "LA",
+          "yards_allowed_per_target": 5.04,
+          "completion_pct_allowed": 55.7
+        },
+        {
+          "rank": 2,
+          "team": "SEA",
+          "yards_allowed_per_target": 5.14,
+          "completion_pct_allowed": 58.3
+        },
+        {
+          "rank": 3,
+          "team": "SF",
+          "yards_allowed_per_target": 6.19,
+          "completion_pct_allowed": 63.1
+        },
+        {
+          "rank": 4,
+          "team": "NYG",
+          "yards_allowed_per_target": 6.4,
+          "completion_pct_allowed": 63.7
+        },
+        {
+          "rank": 5,
+          "team": "KC",
+          "yards_allowed_per_target": 6.57,
+          "completion_pct_allowed": 63.8
+        },
+        {
+          "rank": 6,
+          "team": "ATL",
+          "yards_allowed_per_target": 6.83,
+          "completion_pct_allowed": 58.7
+        },
+        {
+          "rank": 7,
+          "team": "NYJ",
+          "yards_allowed_per_target": 6.94,
+          "completion_pct_allowed": 63.0
+        },
+        {
+          "rank": 8,
+          "team": "MIN",
+          "yards_allowed_per_target": 7.16,
+          "completion_pct_allowed": 55.3
+        },
+        {
+          "rank": 9,
+          "team": "GB",
+          "yards_allowed_per_target": 7.25,
+          "completion_pct_allowed": 66.4
+        },
+        {
+          "rank": 10,
+          "team": "NE",
+          "yards_allowed_per_target": 7.28,
+          "completion_pct_allowed": 63.6
+        },
+        {
+          "rank": 11,
+          "team": "DEN",
+          "yards_allowed_per_target": 7.35,
+          "completion_pct_allowed": 58.1
+        },
+        {
+          "rank": 12,
+          "team": "PHI",
+          "yards_allowed_per_target": 7.36,
+          "completion_pct_allowed": 65.4
+        },
+        {
+          "rank": 13,
+          "team": "CLE",
+          "yards_allowed_per_target": 7.4,
+          "completion_pct_allowed": 55.7
+        },
+        {
+          "rank": 14,
+          "team": "BAL",
+          "yards_allowed_per_target": 7.42,
+          "completion_pct_allowed": 64.0
+        },
+        {
+          "rank": 15,
+          "team": "LV",
+          "yards_allowed_per_target": 7.5,
+          "completion_pct_allowed": 60.2
+        },
+        {
+          "rank": 16,
+          "team": "CAR",
+          "yards_allowed_per_target": 7.51,
+          "completion_pct_allowed": 55.7
+        },
+        {
+          "rank": 17,
+          "team": "TB",
+          "yards_allowed_per_target": 7.62,
+          "completion_pct_allowed": 64.0
+        },
+        {
+          "rank": 18,
+          "team": "NO",
+          "yards_allowed_per_target": 7.64,
+          "completion_pct_allowed": 63.6
+        },
+        {
+          "rank": 19,
+          "team": "BUF",
+          "yards_allowed_per_target": 7.79,
+          "completion_pct_allowed": 62.4
+        },
+        {
+          "rank": 20,
+          "team": "HOU",
+          "yards_allowed_per_target": 7.94,
+          "completion_pct_allowed": 66.0
+        },
+        {
+          "rank": 21,
+          "team": "WAS",
+          "yards_allowed_per_target": 7.96,
+          "completion_pct_allowed": 62.9
+        },
+        {
+          "rank": 22,
+          "team": "LAC",
+          "yards_allowed_per_target": 7.98,
+          "completion_pct_allowed": 66.4
+        },
+        {
+          "rank": 23,
+          "team": "CIN",
+          "yards_allowed_per_target": 8.18,
+          "completion_pct_allowed": 58.4
+        },
+        {
+          "rank": 24,
+          "team": "TEN",
+          "yards_allowed_per_target": 8.27,
+          "completion_pct_allowed": 73.4
+        },
+        {
+          "rank": 25,
+          "team": "CHI",
+          "yards_allowed_per_target": 8.36,
+          "completion_pct_allowed": 59.2
+        },
+        {
+          "rank": 26,
+          "team": "DAL",
+          "yards_allowed_per_target": 8.44,
+          "completion_pct_allowed": 74.8
+        },
+        {
+          "rank": 27,
+          "team": "MIA",
+          "yards_allowed_per_target": 8.55,
+          "completion_pct_allowed": 72.7
+        },
+        {
+          "rank": 28,
+          "team": "PIT",
+          "yards_allowed_per_target": 8.55,
+          "completion_pct_allowed": 58.3
+        },
+        {
+          "rank": 29,
+          "team": "JAX",
+          "yards_allowed_per_target": 8.7,
+          "completion_pct_allowed": 63.1
+        },
+        {
+          "rank": 30,
+          "team": "DET",
+          "yards_allowed_per_target": 8.75,
+          "completion_pct_allowed": 62.4
+        },
+        {
+          "rank": 31,
+          "team": "ARI",
+          "yards_allowed_per_target": 8.77,
+          "completion_pct_allowed": 57.5
+        },
+        {
+          "rank": 32,
+          "team": "IND",
+          "yards_allowed_per_target": 9.23,
+          "completion_pct_allowed": 59.7
+        }
+      ],
+      "best_team": "LA",
+      "worst_team": "IND"
+    },
+    "team_epa_diff": {
+      "metric": "EPA differential (off minus def allowed)",
+      "table": [
+        {
+          "rank": 1,
+          "team": "SF",
+          "epa_diff": 0.274,
+          "turnover_margin": 1,
+          "point_diff": 58.0,
+          "wins": 4,
+          "losses": 0,
+          "games": 4
+        },
+        {
+          "rank": 2,
+          "team": "JAX",
+          "epa_diff": 0.239,
+          "turnover_margin": 5,
+          "point_diff": 53.0,
+          "wins": 4,
+          "losses": 1,
+          "games": 5
+        },
+        {
+          "rank": 3,
+          "team": "KC",
+          "epa_diff": 0.222,
+          "turnover_margin": 4,
+          "point_diff": 41.0,
+          "wins": 4,
+          "losses": 0,
+          "games": 4
+        },
+        {
+          "rank": 4,
+          "team": "BAL",
+          "epa_diff": 0.202,
+          "turnover_margin": 3,
+          "point_diff": 20.0,
+          "wins": 3,
+          "losses": 1,
+          "games": 4
+        },
+        {
+          "rank": 5,
+          "team": "SEA",
+          "epa_diff": 0.155,
+          "turnover_margin": 2,
+          "point_diff": 32.0,
+          "wins": 3,
+          "losses": 1,
+          "games": 4
+        },
+        {
+          "rank": 6,
+          "team": "LA",
+          "epa_diff": 0.148,
+          "turnover_margin": -5,
+          "point_diff": 2.0,
+          "wins": 2,
+          "losses": 2,
+          "games": 4
+        },
+        {
+          "rank": 7,
+          "team": "MIN",
+          "epa_diff": 0.111,
+          "turnover_margin": 5,
+          "point_diff": 45.0,
+          "wins": 5,
+          "losses": 0,
+          "games": 5
+        },
+        {
+          "rank": 8,
+          "team": "CIN",
+          "epa_diff": 0.102,
+          "turnover_margin": 3,
+          "point_diff": 19.0,
+          "wins": 3,
+          "losses": 2,
+          "games": 5
+        },
+        {
+          "rank": 9,
+          "team": "CAR",
+          "epa_diff": 0.087,
+          "turnover_margin": 3,
+          "point_diff": 12.0,
+          "wins": 2,
+          "losses": 2,
+          "games": 4
+        },
+        {
+          "rank": 10,
+          "team": "BUF",
+          "epa_diff": 0.085,
+          "turnover_margin": -2,
+          "point_diff": 20.0,
+          "wins": 3,
+          "losses": 1,
+          "games": 4
+        },
+        {
+          "rank": 11,
+          "team": "NE",
+          "epa_diff": 0.055,
+          "turnover_margin": -5,
+          "point_diff": 16.0,
+          "wins": 3,
+          "losses": 2,
+          "games": 5
+        },
+        {
+          "rank": 12,
+          "team": "HOU",
+          "epa_diff": 0.048,
+          "turnover_margin": 3,
+          "point_diff": -2.0,
+          "wins": 1,
+          "losses": 4,
+          "games": 5
+        },
+        {
+          "rank": 13,
+          "team": "NYJ",
+          "epa_diff": 0.037,
+          "turnover_margin": 2,
+          "point_diff": -3.0,
+          "wins": 2,
+          "losses": 3,
+          "games": 5
+        },
+        {
+          "rank": 14,
+          "team": "ATL",
+          "epa_diff": 0.033,
+          "turnover_margin": -5,
+          "point_diff": 4.0,
+          "wins": 2,
+          "losses": 2,
+          "games": 4
+        },
+        {
+          "rank": 15,
+          "team": "GB",
+          "epa_diff": 0.018,
+          "turnover_margin": 3,
+          "point_diff": -8.0,
+          "wins": 3,
+          "losses": 2,
+          "games": 5
+        },
+        {
+          "rank": 16,
+          "team": "CHI",
+          "epa_diff": 0.008,
+          "turnover_margin": -5,
+          "point_diff": 23.0,
+          "wins": 3,
+          "losses": 2,
+          "games": 5
+        },
+        {
+          "rank": 17,
+          "team": "LV",
+          "epa_diff": -0.001,
+          "turnover_margin": 5,
+          "point_diff": 3.0,
+          "wins": 3,
+          "losses": 2,
+          "games": 5
+        },
+        {
+          "rank": 18,
+          "team": "TB",
+          "epa_diff": -0.031,
+          "turnover_margin": -3,
+          "point_diff": -12.0,
+          "wins": 1,
+          "losses": 4,
+          "games": 5
+        },
+        {
+          "rank": 19,
+          "team": "DET",
+          "epa_diff": -0.039,
+          "turnover_margin": 3,
+          "point_diff": -8.0,
+          "wins": 2,
+          "losses": 2,
+          "games": 4
+        },
+        {
+          "rank": 20,
+          "team": "PIT",
+          "epa_diff": -0.046,
+          "turnover_margin": 1,
+          "point_diff": 2.0,
+          "wins": 3,
+          "losses": 2,
+          "games": 5
+        },
+        {
+          "rank": 21,
+          "team": "WAS",
+          "epa_diff": -0.055,
+          "turnover_margin": 5,
+          "point_diff": -34.0,
+          "wins": 1,
+          "losses": 3,
+          "games": 5
+        },
+        {
+          "rank": 22,
+          "team": "NYG",
+          "epa_diff": -0.055,
+          "turnover_margin": 0,
+          "point_diff": 3.0,
+          "wins": 3,
+          "losses": 1,
+          "games": 5
+        },
+        {
+          "rank": 23,
+          "team": "CLE",
+          "epa_diff": -0.058,
+          "turnover_margin": 0,
+          "point_diff": -19.0,
+          "wins": 3,
+          "losses": 2,
+          "games": 5
+        },
+        {
+          "rank": 24,
+          "team": "DAL",
+          "epa_diff": -0.066,
+          "turnover_margin": -2,
+          "point_diff": 2.0,
+          "wins": 2,
+          "losses": 3,
+          "games": 5
+        },
+        {
+          "rank": 25,
+          "team": "DEN",
+          "epa_diff": -0.078,
+          "turnover_margin": 0,
+          "point_diff": -20.0,
+          "wins": 2,
+          "losses": 2,
+          "games": 4
+        },
+        {
+          "rank": 26,
+          "team": "ARI",
+          "epa_diff": -0.096,
+          "turnover_margin": 2,
+          "point_diff": -30.0,
+          "wins": 1,
+          "losses": 3,
+          "games": 4
+        },
+        {
+          "rank": 27,
+          "team": "NO",
+          "epa_diff": -0.148,
+          "turnover_margin": -6,
+          "point_diff": -33.0,
+          "wins": 1,
+          "losses": 4,
+          "games": 5
+        },
+        {
+          "rank": 28,
+          "team": "IND",
+          "epa_diff": -0.15,
+          "turnover_margin": -6,
+          "point_diff": -14.0,
+          "wins": 2,
+          "losses": 3,
+          "games": 5
+        },
+        {
+          "rank": 29,
+          "team": "LAC",
+          "epa_diff": -0.152,
+          "turnover_margin": -2,
+          "point_diff": -39.0,
+          "wins": 0,
+          "losses": 4,
+          "games": 4
+        },
+        {
+          "rank": 30,
+          "team": "PHI",
+          "epa_diff": -0.196,
+          "turnover_margin": -2,
+          "point_diff": -20.0,
+          "wins": 2,
+          "losses": 3,
+          "games": 5
+        },
+        {
+          "rank": 31,
+          "team": "MIA",
+          "epa_diff": -0.223,
+          "turnover_margin": -4,
+          "point_diff": -62.0,
+          "wins": 0,
+          "losses": 5,
+          "games": 5
+        },
+        {
+          "rank": 32,
+          "team": "TEN",
+          "epa_diff": -0.227,
+          "turnover_margin": -3,
+          "point_diff": -51.0,
+          "wins": 0,
+          "losses": 5,
+          "games": 5
+        }
+      ],
+      "best_team": "SF",
+      "worst_team": "TEN"
+    }
+  }
+}

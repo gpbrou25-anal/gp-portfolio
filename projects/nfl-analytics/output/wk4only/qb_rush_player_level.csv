@@ -1,0 +1,13 @@
+player,team,carries,rush_yards,rush_tds,carries_4plus,carries_10plus,ypc,pct_carries_4plus,explosive_rate_10plus
+A.Kaliakmanis,WAS,3,16.0,0.0,2.0,0.0,5.33,66.7,0.0
+B.Purdy,SF,8,31.0,0.0,3.0,1.0,3.88,37.5,12.5
+C.Ward,TEN,4,27.0,0.0,2.0,1.0,6.75,50.0,25.0
+D.Maye,NE,6,56.0,0.0,3.0,3.0,9.33,50.0,50.0
+D.Watson,CLE,5,24.0,0.0,3.0,1.0,4.8,60.0,20.0
+J.Allen,BUF,5,4.0,1.0,1.0,0.0,0.8,20.0,0.0
+J.Brissett,ARI,4,18.0,0.0,2.0,0.0,4.5,50.0,0.0
+J.Burrow,CIN,3,6.0,1.0,0.0,0.0,2.0,0.0,0.0
+J.Daniels,TB,8,55.0,0.0,5.0,2.0,6.88,62.5,25.0
+J.Herbert,LAC,6,40.0,0.0,2.0,1.0,6.67,33.3,16.7
+J.Hurts,PHI,5,18.0,0.0,2.0,1.0,3.6,40.0,20.0
+K.Murray,MIN,3,21.0,0.0,3.0,0.0,7.0,100.0,0.0

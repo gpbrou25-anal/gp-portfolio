@@ -1,0 +1,13 @@
+player,team,carries,rush_yards,rush_tds,carries_4plus,carries_10plus,ypc,pct_carries_4plus,explosive_rate_10plus
+C.Stroud,HOU,4,7.0,1.0,0.0,0.0,1.75,0.0,0.0
+D.Jones,IND,3,4.0,0.0,0.0,0.0,1.33,0.0,0.0
+D.Maye,NE,4,29.0,1.0,3.0,1.0,7.25,75.0,25.0
+D.Watson,CLE,6,40.0,0.0,4.0,2.0,6.67,66.7,33.3
+G.Smith,NYJ,3,9.0,0.0,1.0,0.0,3.0,33.3,0.0
+J.Daniels,TB,5,25.0,0.0,4.0,0.0,5.0,80.0,0.0
+J.Daniels,WAS,8,104.0,2.0,5.0,4.0,13.0,62.5,50.0
+J.Winston,NYG,4,28.0,0.0,3.0,1.0,7.0,75.0,25.0
+K.Murray,MIN,7,54.0,0.0,6.0,2.0,7.71,85.7,28.6
+M.Willis,MIA,8,74.0,1.0,4.0,4.0,9.25,50.0,50.0
+T.Bagent,CHI,3,17.0,0.0,3.0,0.0,5.67,100.0,0.0
+T.Lawrence,JAX,3,25.0,0.0,2.0,1.0,8.33,66.7,33.3

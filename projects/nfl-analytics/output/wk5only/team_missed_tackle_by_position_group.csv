@@ -1,0 +1,5 @@
+team,position_group,missed_tackles,tackles_combined,missed_tackle_pct
+DAL,DB,5.0,25.0,20.0
+DAL,LB,5.0,34.0,14.7
+TB,DB,3.0,24.0,12.5
+TB,LB,1.0,20.0,5.0
