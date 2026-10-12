@@ -8,6 +8,7 @@ Run locally:  streamlit run portfolio_app/app.py
 Deploy:       share.streamlit.io -> New app -> this repo -> portfolio_app/app.py
 """
 import os
+import re
 import streamlit as st
 
 st.set_page_config(page_title="Georges-Patrick Brou — Portfolio", page_icon="🎯", layout="wide")
@@ -177,14 +178,30 @@ st.markdown("## 03 · Projects")
 st.write("The actual project write-ups, pulled straight from each project's own README.")
 
 
-def show_readme(title, path, repo_link):
+def show_readme(title, path, repo_link, figures_dir=None):
     with st.expander(title, expanded=False):
         if os.path.exists(path):
             with open(path, "r", encoding="utf-8") as f:
                 content = f.read()
+            # drop inline markdown images — their relative paths don't resolve here;
+            # the real charts render separately below via st.image instead
+            content = re.sub(r"!\[[^\]]*\]\([^)]*\)", "", content)
             st.markdown(f'<div class="readme-box">\n\n{content}\n\n</div>', unsafe_allow_html=True)
         else:
             st.caption("README not found locally yet.")
+
+        if figures_dir and os.path.isdir(figures_dir):
+            figs = sorted(
+                f for f in os.listdir(figures_dir) if f.lower().endswith((".png", ".jpg", ".jpeg"))
+            )
+            if figs:
+                st.markdown("**Charts**")
+                fcols = st.columns(2)
+                for i, fig in enumerate(figs):
+                    with fcols[i % 2]:
+                        st.image(os.path.join(figures_dir, fig), use_container_width=True)
+                        st.caption(fig.rsplit(".", 1)[0].replace("_", " ").lstrip("0123456789 "))
+
         st.caption(f"[View on GitHub →]({repo_link})")
 
 
@@ -194,19 +211,16 @@ show_readme(
     f"https://github.com/{GITHUB_USER}/{THIS_REPO}/tree/main/projects/nfl-analytics",
 )
 show_readme(
-    "NBA Analytics Portfolio — overview",
-    os.path.join(README_DIR, "nba-root.md"),
-    f"https://github.com/{GITHUB_USER}/NBA-Analytics-Portfolio",
-)
-show_readme(
     "Volume vs. Elite Defenses",
     os.path.join(README_DIR, "nba-01.md"),
     f"https://github.com/{GITHUB_USER}/NBA-Analytics-Portfolio/tree/main/projects/01-volume-vs-elite-defenses",
+    figures_dir=os.path.join(README_DIR, "figures-01"),
 )
 show_readme(
     "Knicks 2026 Contender Analysis",
     os.path.join(README_DIR, "nba-02.md"),
     f"https://github.com/{GITHUB_USER}/NBA-Analytics-Portfolio/tree/main/projects/02-knicks-contender-2026",
+    figures_dir=os.path.join(README_DIR, "figures-02"),
 )
 
 st.divider()
