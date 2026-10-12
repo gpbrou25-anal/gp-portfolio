@@ -7,6 +7,7 @@ and the real project READMEs (not just links) from GitHub.
 Run locally:  streamlit run portfolio_app/app.py
 Deploy:       share.streamlit.io -> New app -> this repo -> portfolio_app/app.py
 """
+import base64
 import os
 import re
 import streamlit as st
@@ -203,29 +204,41 @@ st.markdown("## 03 · Projects")
 st.write("The actual project write-ups, pulled straight from each project's own README.")
 
 
+def _inline_image_tag(fname, figures_dir, alt):
+    """Base64-embed a local chart image so it can sit inline inside st.markdown HTML."""
+    fpath = os.path.join(figures_dir, fname)
+    if not os.path.exists(fpath):
+        return f"\n\n*(chart not found: {fname})*\n\n"
+    ext = fname.rsplit(".", 1)[-1].lower()
+    mime = "jpeg" if ext in ("jpg", "jpeg") else ext
+    with open(fpath, "rb") as f:
+        b64 = base64.b64encode(f.read()).decode("ascii")
+    return (
+        f'\n\n<img src="data:image/{mime};base64,{b64}" alt="{alt}" '
+        f'style="max-width:100%;border-radius:6px;margin:10px 0;border:1px solid #25394c;"/>'
+        f'\n\n<div style="font-size:12.5px;color:#8ea3b3;margin:-6px 0 10px;">{alt}</div>\n\n'
+    )
+
+
 def show_readme(title, path, repo_link, figures_dir=None):
     with st.expander(title, expanded=False):
         if os.path.exists(path):
             with open(path, "r", encoding="utf-8") as f:
                 content = f.read()
-            # drop inline markdown images — their relative paths don't resolve here;
-            # the real charts render separately below via st.image instead
-            content = re.sub(r"!\[[^\]]*\]\([^)]*\)", "", content)
+            if figures_dir and os.path.isdir(figures_dir):
+                # replace each inline ![alt](figures/xxx.png) with the real chart,
+                # embedded right where the write-up already places it
+                def _sub(m):
+                    alt, ref = m.group(1), m.group(2)
+                    fname = ref.rsplit("/", 1)[-1]
+                    return _inline_image_tag(fname, figures_dir, alt or fname)
+
+                content = re.sub(r"!\[([^\]]*)\]\(([^)]*)\)", _sub, content)
+            else:
+                content = re.sub(r"!\[[^\]]*\]\([^)]*\)", "", content)
             st.markdown(f'<div class="readme-box">\n\n{content}\n\n</div>', unsafe_allow_html=True)
         else:
             st.caption("README not found locally yet.")
-
-        if figures_dir and os.path.isdir(figures_dir):
-            figs = sorted(
-                f for f in os.listdir(figures_dir) if f.lower().endswith((".png", ".jpg", ".jpeg"))
-            )
-            if figs:
-                st.markdown("**Charts**")
-                fcols = st.columns(2)
-                for i, fig in enumerate(figs):
-                    with fcols[i % 2]:
-                        st.image(os.path.join(figures_dir, fig), use_container_width=True)
-                        st.caption(fig.rsplit(".", 1)[0].replace("_", " ").lstrip("0123456789 "))
 
         st.caption(f"[View on GitHub →]({repo_link})")
 
