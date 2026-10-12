@@ -329,6 +329,8 @@ def show_readme(title, path, repo_link, figures_dir=None):
                 content = re.sub(r"!\[([^\]]*)\]\(([^)]*)\)", _sub, content)
             else:
                 content = re.sub(r"!\[[^\]]*\]\([^)]*\)", "", content)
+            # drop markdown horizontal-rule dividers (---) — they render as visible lines
+            content = re.sub(r"(?m)^\s*-{3,}\s*$", "", content)
             st.markdown(f'<div class="readme-box">\n\n{content}\n\n</div>', unsafe_allow_html=True)
         else:
             st.caption("README not found locally yet.")
