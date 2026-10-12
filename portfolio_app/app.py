@@ -47,6 +47,16 @@ _CSS = """
     background: rgba(255,255,255,0.86);
     box-shadow: 0 2px 10px rgba(20,40,60,0.06);
 }
+.hero-flex { display: flex; gap: 40px; justify-content: space-between; flex-wrap: wrap; }
+.hero-main { flex: 1 1 520px; min-width: 0; }
+.hero-contact {
+    flex: 0 0 240px; font-family: monospace; font-size: 13px; color: #33424e;
+    border-left: 1px solid #dfe6ec; padding-left: 28px; display: flex; flex-direction: column; gap: 10px;
+}
+.hero-contact a { color: #33424e; text-decoration: none; }
+.hero-contact a:hover { color: #1f8f85; }
+.hero-contact .k { color: #8a99a6; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; display: block; margin-bottom: 2px; }
+@media (max-width: 900px) { .hero-contact { border-left: none; border-top: 1px solid #dfe6ec; padding-left: 0; padding-top: 20px; flex-basis: 100%; } }
 h1, h2, h3 { font-family: 'Georgia', serif; letter-spacing: 0.01em; }
 h1 { color: #1b2630 !important; }
 h2 { color: #1b2630 !important; border-bottom: 1px solid #dfe6ec; padding-bottom: 10px; margin-top: 2.2rem !important; }
@@ -87,7 +97,8 @@ with open(os.path.join(ASSETS, "logo.png"), "rb") as f:
     _logo_b64 = base64.b64encode(f.read()).decode("ascii")
 
 st.markdown(
-    '<div class="hero-banner">'
+    '<div class="hero-banner"><div class="hero-flex">'
+    '<div class="hero-main">'
     f'<img src="data:image/png;base64,{_logo_b64}" style="height:96px;width:auto;margin-bottom:18px;" alt="A\'eye logo">'
     '<div class="eyebrow">Multisport analyst</div>'
     '<h1 style="font-size:46px;margin:6px 0 14px;">Georges-Patrick Brou</h1>'
@@ -95,24 +106,29 @@ st.markdown(
     'partnership with Barça Innovation Hub, on top of an MSc in Big Data &amp; Analytics. Sport is the '
     'thread through both, I\'m genuinely passionate about more than one of them, and I\'m building real '
     'skills in data analysis, performance scouting, and video analysis to go with it. What I bring is '
-    'an eye for detail and for the pattern other people miss. I\'m looking for an environment where '
-    'that\'s actually useful: adding value for a team, finding solutions, helping improve recruitment '
-    'and performance, and sharpening what I know inside a structured setup.</p>'
+    'an eye, for detail, for the pattern other people miss. That\'s where my project\'s name comes '
+    'from: Analytics eye, A\'eye. I\'m looking for an environment where that\'s actually useful: adding '
+    'value for a team, finding solutions, helping improve recruitment and performance, and sharpening '
+    'what I know inside a structured setup.</p>'
     '<p class="sub">Below is my portfolio, bringing together everything I\'ve worked on so far. Enjoy '
     'a quick look at how I see sport, I\'d genuinely like the chance to talk more and go deeper into '
     'it.</p>'
-    '<div class="meta-row">MSc <b>Big Data &amp; Analytics</b> &nbsp;·&nbsp; Sport Management &amp; '
-    'Legal Skills, <b>ISDE Barcelona</b> &nbsp;·&nbsp; <b>Barça Innovation Hub</b> &nbsp;·&nbsp; '
-    '<b>Barcelona</b>, Spain</div>'
-    '</div>',
+    '<div class="meta-row">Sport Management &amp; Legal Skills, <b>ISDE Barcelona</b> &nbsp;·&nbsp; '
+    'MSc <b>Big Data &amp; Analytics</b> &nbsp;·&nbsp; <b>Wyscout</b> match analysis</div>'
+    '</div>'
+    '<div class="hero-contact">'
+    '<div><span class="k">Location</span>Barcelona, Spain</div>'
+    '<div><span class="k">Email</span><a href="mailto:gbottobrou@gmail.com">gbottobrou@gmail.com</a></div>'
+    '<div><span class="k">Phone</span><a href="tel:+34667405535">+34 667 405 535</a></div>'
+    '<div><span class="k">LinkedIn</span>'
+    '<a href="https://www.linkedin.com/in/georges-brou-bb68b9281/" target="_blank">'
+    'linkedin.com/in/georges-brou</a></div>'
+    '</div>'
+    '</div></div>',
     unsafe_allow_html=True,
 )
 
-c1, c2 = st.columns([1, 1])
-with c1:
-    st.link_button("gbottobrou@gmail.com", "mailto:gbottobrou@gmail.com", use_container_width=True)
-with c2:
-    st.link_button("GitHub profile", f"https://github.com/{GITHUB_USER}", use_container_width=True)
+st.link_button("GitHub profile", f"https://github.com/{GITHUB_USER}")
 
 st.divider()
 
