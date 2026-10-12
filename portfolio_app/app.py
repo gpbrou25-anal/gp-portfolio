@@ -46,6 +46,17 @@ hr { border-color: #25394c; }
 .readme-box { background: #101e29; border: 1px solid #25394c; border-radius: 8px; padding: 18px 22px; }
 .readme-box h1, .readme-box h2, .readme-box h3 { border-bottom: none; margin-top: 0.8rem !important; font-family: 'Georgia', serif; }
 [data-testid="stExpander"] { background: #101e29; border: 1px solid #25394c; border-radius: 8px; }
+.analysis-block { background: #101e29; border: 1px solid #25394c; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px; }
+.analysis-block h3 { margin: 0 0 4px 0 !important; font-size: 19px; color: #eaf2f6; }
+.analysis-score { font-family: monospace; font-size: 12.5px; color: #d9b968; letter-spacing: 0.04em; margin-bottom: 14px; }
+.analysis-block p { margin: 0 0 12px 0; line-height: 1.6; }
+.analysis-sub { font-family: monospace; font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #45b0a8; margin: 16px 0 8px; }
+ul.analysis-bullets { list-style: none; margin: 0 0 14px 0; padding: 0; }
+ul.analysis-bullets li { position: relative; padding-left: 18px; margin-bottom: 9px; line-height: 1.55; color: #cdd9e1; }
+ul.analysis-bullets li::before { content: "•"; position: absolute; left: 0; color: #45b0a8; }
+ul.analysis-arrows { list-style: none; margin: 0 0 14px 0; padding: 0; }
+ul.analysis-arrows li { position: relative; padding-left: 22px; margin-bottom: 9px; line-height: 1.55; color: #cdd9e1; }
+ul.analysis-arrows li::before { content: "→"; position: absolute; left: 0; color: #d9b968; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -82,26 +93,9 @@ st.divider()
 # 01 — Video breakdown
 # ---------------------------------------------------------------------------
 st.markdown("## 01 · Video breakdown")
-st.write(
-    "I break down match footage in Wyscout on my own time. Right now it's a Premier League team's "
-    "right-side corners under their primary taker this season — mapping the recurring formation and "
-    "splitting it by near-post vs. far-post execution, with specific player roles named rather than "
-    "one-off commentary."
-)
-st.markdown(
-    '<span class="tag">Wyscout</span><span class="tag">Clip tagging</span>'
-    '<span class="tag">Set-piece analysis</span><span class="tag">Opposition scouting</span>',
-    unsafe_allow_html=True,
-)
 
-video_files = []
-if os.path.isdir(VIDEO_DIR):
-    video_files = sorted(
-        f for f in os.listdir(VIDEO_DIR) if f.lower().endswith((".mp4", ".mov", ".webm"))
-    )
-
-# YouTube links — one per line in youtube_links.txt, optionally "Title | URL"
-yt_entries = []
+# YouTube links — one per line in youtube_links.txt: "group | title | url"
+yt_by_group = {}
 yt_path = os.path.join(VIDEO_DIR, "youtube_links.txt")
 if os.path.exists(yt_path):
     with open(yt_path, "r", encoding="utf-8") as f:
@@ -109,34 +103,117 @@ if os.path.exists(yt_path):
             line = line.strip()
             if not line or line.startswith("#"):
                 continue
-            if "|" in line:
-                title, url = line.split("|", 1)
-                yt_entries.append((title.strip(), url.strip()))
+            parts = [p.strip() for p in line.split("|")]
+            if len(parts) == 3:
+                group, title, url = parts
+            elif len(parts) == 2:
+                group, title, url = "corners", parts[0], parts[1]
             else:
-                yt_entries.append((None, line))
+                group, title, url = "corners", None, parts[0]
+            yt_by_group.setdefault(group, []).append((title, url))
 
-if video_files or yt_entries:
-    total = len(video_files) + len(yt_entries)
-    vcols = st.columns(min(2, total))
-    slot = 0
-    for vf in video_files:
-        with vcols[slot % len(vcols)]:
-            st.video(os.path.join(VIDEO_DIR, vf))
-            st.caption(vf)
-        slot += 1
-    for title, url in yt_entries:
-        with vcols[slot % len(vcols)]:
+# local files always go under "corners" by default
+video_files = []
+if os.path.isdir(VIDEO_DIR):
+    video_files = sorted(
+        f for f in os.listdir(VIDEO_DIR) if f.lower().endswith((".mp4", ".mov", ".webm"))
+    )
+for vf in video_files:
+    yt_by_group.setdefault("corners", []).append((vf, os.path.join(VIDEO_DIR, vf)))
+
+
+def bullets(items, arrows=False):
+    cls = "analysis-arrows" if arrows else "analysis-bullets"
+    lis = "".join(f"<li>{item}</li>" for item in items)
+    return f'<ul class="{cls}">{lis}</ul>'
+
+
+def show_clips(group):
+    clips = yt_by_group.get(group, [])
+    if not clips:
+        st.caption(
+            f"No clip yet for this one — add a line to `portfolio_app/assets/videos/youtube_links.txt` "
+            f"as `{group} | Title | https://youtu.be/...`."
+        )
+        return
+    cols = st.columns(min(2, len(clips)))
+    for i, (title, url) in enumerate(clips):
+        with cols[i % len(cols)]:
             st.video(url)
             if title:
                 st.caption(title)
-        slot += 1
-else:
-    st.info(
-        "No video yet. Easiest way: upload your clip to YouTube as **unlisted**, then add the link "
-        "to `portfolio_app/assets/videos/youtube_links.txt` in the repo (one link per line, or "
-        "`Title | URL`) — it plays here automatically, no code changes needed. A small local file "
-        "also works: drop it straight into `portfolio_app/assets/videos/`."
-    )
+
+
+# --- Analysis 1: Saka's corners from the right -----------------------------
+st.markdown(
+    '<div class="analysis-block">'
+    '<h3>Saka\'s corners from the right</h3>'
+    '<div class="analysis-score">PREMIER LEAGUE 2026/27 · ARSENAL · SET-PIECE ANALYSIS</div>'
+    "<p>Arsenal haven't scored from a right-side corner yet this season, but watching some of "
+    "Saka's deliveries from the right, that won't last long.</p>"
+    "<p>Same formation almost every time: a group anchored at the back post, a guy crowding the "
+    "goalkeeper's zone, and a runner arriving at pace. What changes is the execution depending on "
+    "where the ball's going.</p>"
+    '<div class="analysis-sub">Near post</div>'
+    + bullets([
+        "The group overloads the near-post zone and sets blocks, players like Hincapié and Calafiori "
+        "doing the screening, stopping defenders from attacking the ball and creating space for the "
+        "targets",
+        "Gabriel is usually the one running the wide receiver route off the underlap, arriving at pace "
+        "to meet it free, though sometimes he's the one crowding the keeper's zone instead",
+        "White covers the keeper job too, Saliba would normally be in that mix but he's out right now",
+    ])
+    + '<div class="analysis-sub">Far post</div>'
+    + bullets([
+        "Same group, different job, they can attack the middle instead or hold their position at the "
+        "back post",
+        "When they turn to face the ball, it's Konsa or Havertz set up for the flick-on",
+        "The blockers aren't screening for someone else anymore, they're the ones contesting the "
+        "second ball at the back post",
+        "Gabriel isn't locked into the near-post route either, he can run it to the back post just as "
+        "easily",
+    ])
+    + "<p>It's basically one formation with multiple reads built in, like an NFL playbook, the picture "
+    "changes depending on whether the defense sits zonal at the near post or goes man-to-man at the "
+    "back.</p>"
+    "<p>Not really a coincidence either. Arteta and LA Rams head coach Sean McVay talk regularly "
+    "(same owner, Stan Kroenke), and McVay's own line is that every NFL play is basically a "
+    "set-piece. That's the exact mindset showing up in these corners.</p>"
+    "<p>Clips below (3 near, 3 far post), zero goals so far, but the spacing and the variety are "
+    "still clean for that to hold much longer.</p>"
+    '<span class="tag">Built in Wyscout</span>'
+    "</div>",
+    unsafe_allow_html=True,
+)
+show_clips("corners")
+
+# --- Analysis 2: Brighton 3-0 Arsenal, the first goal -----------------------
+st.markdown(
+    '<div class="analysis-block">'
+    "<h3>Brighton 3-0 Arsenal — the first goal</h3>"
+    '<div class="analysis-score">MATCHWEEK 5 · PREMIER LEAGUE 2026/27 · BRIGHTON 3–0 ARSENAL</div>'
+    "<p>Arsenal had just survived their hardest 20 minutes against Brighton. Then one patient "
+    "Brighton possession undid it.</p>"
+    "<p>The first goal, 31st minute, from outside the box.</p>"
+    + bullets([
+        "Arsenal sat deep in 4-4-2, no real pressure on the ball, settled enough to switch off for a "
+        "second",
+        "Guimarães gets drawn in by the ball and presses a man who's already covered, the pass behind "
+        "him goes unnoticed",
+        "Ayari drifts inside and drags Calafiori out with him, Gabriel drops in just to help behind",
+        "Calafiori recovers and tries to force the shot away, reading it like Raya already has it "
+        "covered",
+        "Raya's expecting something else, and by the time that gap shows, Groß has already finished "
+        "near post, from outside the box",
+    ])
+    + "<p>It wasn't poor defending by Arsenal. For one phase, nobody was sure who had what: Guimarães "
+    "drawn out, Calafiori covering, Gabriel helping, Raya searching. That's all it takes at this "
+    "level to punish little mistakes, even from distance.</p>"
+    '<span class="tag">Built in Wyscout</span>'
+    "</div>",
+    unsafe_allow_html=True,
+)
+show_clips("brighton")
 
 st.divider()
 
@@ -144,6 +221,30 @@ st.divider()
 # 02 — Carousels
 # ---------------------------------------------------------------------------
 st.markdown("## 02 · Carousels")
+
+st.markdown(
+    '<div class="analysis-block">'
+    "<p>Four games into the 2026 NFL season, so I pulled the numbers and broke down what's actually "
+    "happening.</p>"
+    "<p>Built through \"Analytics eye,\" my multisport analytics project covering football, "
+    "basketball, and American football for this one. I pulled real play-by-play data "
+    "(nflverse/nflfastR), Next Gen Stats, PFR, and FTN charting, ran it through my own Streamlit app, "
+    "and turned it into this overview.</p>"
+    '<div class="analysis-sub">What\'s in it</div>'
+    + bullets([
+        "Teams that changed coaches this offseason — who's actually winning with the new staff, who "
+        "isn't",
+        "Teams playing well right now: explosive run games, defenses taking the ball away",
+        "Teams showing both sides: strong in one area, exposed in the other",
+        "Teams still searching for their first win",
+    ], arrows=True)
+    + "<p>Every number here is pulled straight from the data, nothing guessed or estimated.</p>"
+    "<p>This is just the overview, next time, a different sport or a deeper cut into one position "
+    "group.</p>"
+    '<span class="tag">A\'eye Multisport Analytics Insights</span>'
+    "</div>",
+    unsafe_allow_html=True,
+)
 
 carousels = []
 if os.path.isdir(CAROUSEL_DIR):
