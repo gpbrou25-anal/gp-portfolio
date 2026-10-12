@@ -99,17 +99,42 @@ if os.path.isdir(VIDEO_DIR):
         f for f in os.listdir(VIDEO_DIR) if f.lower().endswith((".mp4", ".mov", ".webm"))
     )
 
-if video_files:
-    vcols = st.columns(min(3, len(video_files)))
-    for i, vf in enumerate(video_files):
-        with vcols[i % len(vcols)]:
+# YouTube links — one per line in youtube_links.txt, optionally "Title | URL"
+yt_entries = []
+yt_path = os.path.join(VIDEO_DIR, "youtube_links.txt")
+if os.path.exists(yt_path):
+    with open(yt_path, "r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line or line.startswith("#"):
+                continue
+            if "|" in line:
+                title, url = line.split("|", 1)
+                yt_entries.append((title.strip(), url.strip()))
+            else:
+                yt_entries.append((None, line))
+
+if video_files or yt_entries:
+    total = len(video_files) + len(yt_entries)
+    vcols = st.columns(min(2, total))
+    slot = 0
+    for vf in video_files:
+        with vcols[slot % len(vcols)]:
             st.video(os.path.join(VIDEO_DIR, vf))
             st.caption(vf)
+        slot += 1
+    for title, url in yt_entries:
+        with vcols[slot % len(vcols)]:
+            st.video(url)
+            if title:
+                st.caption(title)
+        slot += 1
 else:
     st.info(
-        "No video uploaded yet. Put your real clip at "
-        "`portfolio_app/assets/videos/` in the repo (any `.mp4`, `.mov`, or `.webm` file), commit "
-        "and push — it plays here automatically, no code changes needed."
+        "No video yet. Easiest way: upload your clip to YouTube as **unlisted**, then add the link "
+        "to `portfolio_app/assets/videos/youtube_links.txt` in the repo (one link per line, or "
+        "`Title | URL`) — it plays here automatically, no code changes needed. A small local file "
+        "also works: drop it straight into `portfolio_app/assets/videos/`."
     )
 
 st.divider()

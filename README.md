@@ -23,8 +23,16 @@ Every push to `main` redeploys automatically — no need to repeat the steps abo
 
 ## Adding content
 
-- **Video clips**: drop `.mp4`/`.mov`/`.webm` files into `portfolio_app/assets/videos/`, commit and
-  push. They show up in the Video Breakdown section automatically.
+- **Video clips**: GitHub rejects large video files, so the easiest path is YouTube.
+  1. Upload the clip to YouTube as **unlisted** (Settings → Visibility → Unlisted — not public, not
+     searchable, only people with the link can watch it).
+  2. Copy the video's URL.
+  3. Add a line to `portfolio_app/assets/videos/youtube_links.txt`: either just the URL, or
+     `Title | URL`.
+  4. Commit and push — it plays right in the portfolio automatically.
+
+  A small local file also works if it's under GitHub's limit: drop it straight into
+  `portfolio_app/assets/videos/` (`.mp4`/`.mov`/`.webm`).
 - **Carousel slides**: drop image files into `portfolio_app/assets/carousel/`, commit and push. They
   show up in the Carousel section automatically, in alphabetical order, with prev/next navigation.
 
