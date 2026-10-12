@@ -230,32 +230,14 @@ show_clips("brighton")
 
 st.divider()
 
-# ---------------------------------------------------------------------------
-# 02 — Carousels
-# ---------------------------------------------------------------------------
-st.markdown("## 02 · Carousels")
-st.caption("NFL Performance Analytics — the write-up is in Projects below, this is just the carousel.")
-
-carousels = []
-if os.path.isdir(CAROUSEL_DIR):
-    for name in sorted(os.listdir(CAROUSEL_DIR)):
-        folder = os.path.join(CAROUSEL_DIR, name)
-        if os.path.isdir(folder):
-            slides = sorted(
-                f for f in os.listdir(folder) if f.lower().endswith((".jpg", ".jpeg", ".png"))
-            )
-            if slides:
-                carousels.append((name, folder, slides))
-
-CAROUSEL_LABELS = {
-    "nfl-overview": "Four Games In — NFL season overview",
-    "setpiece-analysis": "Set-piece analysis — LinkedIn carousel",
-}
-
-if carousels:
-    labels = [CAROUSEL_LABELS.get(name, name) for name, _, _ in carousels]
-    picked_label = st.radio("Which carousel", labels, horizontal=True, label_visibility="collapsed")
-    name, folder, slides = carousels[labels.index(picked_label)]
+def render_carousel(name):
+    """Render one named carousel folder in place, wherever it's called from."""
+    folder = os.path.join(CAROUSEL_DIR, name)
+    if not os.path.isdir(folder):
+        return
+    slides = sorted(f for f in os.listdir(folder) if f.lower().endswith((".jpg", ".jpeg", ".png")))
+    if not slides:
+        return
 
     state_key = f"slide_idx_{name}"
     if state_key not in st.session_state:
@@ -276,22 +258,12 @@ if carousels:
         f'<div class="slide-counter">Slide {st.session_state[state_key] + 1} / {len(slides)}</div>',
         unsafe_allow_html=True,
     )
-else:
-    st.info("No carousel slides yet.")
 
-st.caption(
-    "To add a carousel: create a folder under `portfolio_app/assets/carousel/<name>/` and drop the "
-    "slide images in it (in the order they should play), commit and push. A second carousel folder, "
-    "`setpiece-analysis/`, is already there and ready for your set-piece LinkedIn carousel — just add "
-    "the images to it."
-)
-
-st.divider()
 
 # ---------------------------------------------------------------------------
-# 03 — Projects (real READMEs, not just links)
+# 02 — Projects (real READMEs, not just links)
 # ---------------------------------------------------------------------------
-st.markdown("## 03 · Projects")
+st.markdown("## 02 · Projects")
 st.write("The actual project write-ups, pulled straight from each project's own README.")
 
 
@@ -355,6 +327,7 @@ with st.expander("NFL Performance Analytics", expanded=False):
         "</div>",
         unsafe_allow_html=True,
     )
+    render_carousel("nfl-overview")
     _diag_path = os.path.join(README_DIR, "nfl-diagnostic-screen.jpg")
     if os.path.exists(_diag_path):
         st.image(_diag_path, use_container_width=True)
