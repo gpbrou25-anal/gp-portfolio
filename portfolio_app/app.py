@@ -1,8 +1,8 @@
 """
 Georges-Patrick Brou — Portfolio
 
-Three things: video breakdown (Wyscout match/set-piece analysis), the NFL
-carousel deck, and links to the real analysis repos on GitHub.
+Three things: video breakdown (Wyscout match/set-piece analysis), carousels,
+and the real project READMEs (not just links) from GitHub.
 
 Run locally:  streamlit run portfolio_app/app.py
 Deploy:       share.streamlit.io -> New app -> this repo -> portfolio_app/app.py
@@ -15,6 +15,8 @@ st.set_page_config(page_title="Georges-Patrick Brou — Portfolio", page_icon="�
 ASSETS = os.path.join(os.path.dirname(__file__), "assets")
 VIDEO_DIR = os.path.join(ASSETS, "videos")
 CAROUSEL_DIR = os.path.join(ASSETS, "carousel")
+README_DIR = os.path.join(ASSETS, "readmes")
+NFL_README = os.path.join(os.path.dirname(__file__), "..", "projects", "nfl-analytics", "README.md")
 GITHUB_USER = "gpbrou25-anal"
 THIS_REPO = "gp-portfolio"
 
@@ -38,10 +40,10 @@ p, li, span, div { color: #cdd9e1; }
 figcaption, .stCaption, [data-testid="stCaptionContainer"] { color: #8ea3b3 !important; }
 a { color: #45b0a8; }
 hr { border-color: #25394c; }
-.gh-card { background: #101e29; border: 1px solid #25394c; border-radius: 8px; padding: 16px 18px; margin-bottom: 14px; }
-.gh-card h4 { margin: 0 0 6px 0; color: #eaf2f6; }
-.gh-card a { font-family: monospace; font-size: 13px; }
 .slide-counter { font-family: monospace; font-size: 13px; color: #8ea3b3; text-align: center; margin-top: 10px; }
+.readme-box { background: #101e29; border: 1px solid #25394c; border-radius: 8px; padding: 18px 22px; }
+.readme-box h1, .readme-box h2, .readme-box h3 { border-bottom: none; margin-top: 0.8rem !important; font-family: 'Georgia', serif; }
+[data-testid="stExpander"] { background: #101e29; border: 1px solid #25394c; border-radius: 8px; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -84,21 +86,6 @@ st.write(
     "splitting it by near-post vs. far-post execution, with specific player roles named rather than "
     "one-off commentary."
 )
-
-gcol1, gcol2 = st.columns(2)
-with gcol1:
-    st.image(os.path.join(ASSETS, "corner-1.jpg"), use_container_width=True)
-    st.caption(
-        "**Near post.** The back-post group screens the defenders, clearing a header for the target "
-        "or the runner arriving at pace. A second player occupies the goalkeeper's zone throughout."
-    )
-with gcol2:
-    st.image(os.path.join(ASSETS, "corner-2.jpg"), use_container_width=True)
-    st.caption(
-        "**Far post.** Same formation, different job — the group attacks the middle or holds the "
-        "back post, then contests the second ball once play turns to face the delivery."
-    )
-
 st.markdown(
     '<span class="tag">Wyscout</span><span class="tag">Clip tagging</span>'
     '<span class="tag">Set-piece analysis</span><span class="tag">Opposition scouting</span>',
@@ -107,84 +94,119 @@ st.markdown(
 
 video_files = []
 if os.path.isdir(VIDEO_DIR):
-    video_files = sorted(f for f in os.listdir(VIDEO_DIR) if f.lower().endswith((".mp4", ".mov", ".webm")))
+    video_files = sorted(
+        f for f in os.listdir(VIDEO_DIR) if f.lower().endswith((".mp4", ".mov", ".webm"))
+    )
 
 if video_files:
-    st.markdown("**Clips**")
     vcols = st.columns(min(3, len(video_files)))
     for i, vf in enumerate(video_files):
         with vcols[i % len(vcols)]:
             st.video(os.path.join(VIDEO_DIR, vf))
             st.caption(vf)
 else:
-    st.caption(
-        "To add video clips: drop .mp4/.mov files into `portfolio_app/assets/videos/`, commit and "
-        "push — they'll appear here automatically, no code changes needed."
+    st.info(
+        "No video uploaded yet. Put your real clip at "
+        "`portfolio_app/assets/videos/` in the repo (any `.mp4`, `.mov`, or `.webm` file), commit "
+        "and push — it plays here automatically, no code changes needed."
     )
 
 st.divider()
 
 # ---------------------------------------------------------------------------
-# 02 — Carousel
+# 02 — Carousels
 # ---------------------------------------------------------------------------
-st.markdown("## 02 · Carousel")
-st.write("Four Games In — the NFL season-overview carousel, built from the full analytics pipeline below.")
+st.markdown("## 02 · Carousels")
 
-slides = []
+carousels = []
 if os.path.isdir(CAROUSEL_DIR):
-    slides = sorted(f for f in os.listdir(CAROUSEL_DIR) if f.lower().endswith((".jpg", ".jpeg", ".png")))
+    for name in sorted(os.listdir(CAROUSEL_DIR)):
+        folder = os.path.join(CAROUSEL_DIR, name)
+        if os.path.isdir(folder):
+            slides = sorted(
+                f for f in os.listdir(folder) if f.lower().endswith((".jpg", ".jpeg", ".png"))
+            )
+            if slides:
+                carousels.append((name, folder, slides))
 
-if slides:
-    if "slide_idx" not in st.session_state:
-        st.session_state.slide_idx = 0
-    st.session_state.slide_idx %= len(slides)
+CAROUSEL_LABELS = {
+    "nfl-overview": "Four Games In — NFL season overview",
+    "setpiece-analysis": "Set-piece analysis — LinkedIn carousel",
+}
+
+if carousels:
+    labels = [CAROUSEL_LABELS.get(name, name) for name, _, _ in carousels]
+    picked_label = st.radio("Which carousel", labels, horizontal=True, label_visibility="collapsed")
+    name, folder, slides = carousels[labels.index(picked_label)]
+
+    state_key = f"slide_idx_{name}"
+    if state_key not in st.session_state:
+        st.session_state[state_key] = 0
+    st.session_state[state_key] %= len(slides)
 
     nav1, nav2, nav3 = st.columns([1, 6, 1])
     with nav1:
-        if st.button("← Prev", use_container_width=True):
-            st.session_state.slide_idx = (st.session_state.slide_idx - 1) % len(slides)
+        if st.button("← Prev", use_container_width=True, key=f"prev_{name}"):
+            st.session_state[state_key] = (st.session_state[state_key] - 1) % len(slides)
     with nav3:
-        if st.button("Next →", use_container_width=True):
-            st.session_state.slide_idx = (st.session_state.slide_idx + 1) % len(slides)
+        if st.button("Next →", use_container_width=True, key=f"next_{name}"):
+            st.session_state[state_key] = (st.session_state[state_key] + 1) % len(slides)
     with nav2:
-        st.image(os.path.join(CAROUSEL_DIR, slides[st.session_state.slide_idx]), use_container_width=True)
+        st.image(os.path.join(folder, slides[st.session_state[state_key]]), use_container_width=True)
 
     st.markdown(
-        f'<div class="slide-counter">Slide {st.session_state.slide_idx + 1} / {len(slides)}</div>',
+        f'<div class="slide-counter">Slide {st.session_state[state_key] + 1} / {len(slides)}</div>',
         unsafe_allow_html=True,
     )
 else:
-    st.caption(
-        "To add carousel slides: drop image files into `portfolio_app/assets/carousel/`, commit and "
-        "push — they'll appear here automatically, in alphabetical order."
-    )
+    st.info("No carousel slides yet.")
+
+st.caption(
+    "To add a carousel: create a folder under `portfolio_app/assets/carousel/<name>/` and drop the "
+    "slide images in it (in the order they should play), commit and push. A second carousel folder, "
+    "`setpiece-analysis/`, is already there and ready for your set-piece LinkedIn carousel — just add "
+    "the images to it."
+)
 
 st.divider()
 
 # ---------------------------------------------------------------------------
-# 03 — GitHub analysis
+# 03 — Projects (real READMEs, not just links)
 # ---------------------------------------------------------------------------
-st.markdown("## 03 · GitHub analysis")
-st.markdown(
-    f"""
-<div class="gh-card">
-<h4>NFL Performance Analytics</h4>
-Full data pipeline pulling play-by-play data, computing efficiency and explosive-play metrics for all
-32 teams, refreshed weekly, presented through two Streamlit apps. Source of the carousel above.<br><br>
-<a href="https://github.com/{GITHUB_USER}/{THIS_REPO}/tree/main/projects/nfl-analytics">github.com/{GITHUB_USER}/{THIS_REPO}/tree/main/projects/nfl-analytics →</a>
-</div>
-<div class="gh-card">
-<h4>NBA Analytics Portfolio</h4>
-Opponent-adjusted scoring, clutch impact, injury recovery curves, contract value.<br><br>
-<a href="https://github.com/{GITHUB_USER}/NBA-Analytics-Portfolio">github.com/{GITHUB_USER}/NBA-Analytics-Portfolio →</a>
-</div>
-<div class="gh-card">
-<h4>This portfolio</h4>
-The source behind this page itself.<br><br>
-<a href="https://github.com/{GITHUB_USER}/{THIS_REPO}">github.com/{GITHUB_USER}/{THIS_REPO} →</a>
-</div>
-""",
-    unsafe_allow_html=True,
+st.markdown("## 03 · Projects")
+st.write("The actual project write-ups, pulled straight from each project's own README.")
+
+
+def show_readme(title, path, repo_link):
+    with st.expander(title, expanded=False):
+        if os.path.exists(path):
+            with open(path, "r", encoding="utf-8") as f:
+                content = f.read()
+            st.markdown(f'<div class="readme-box">\n\n{content}\n\n</div>', unsafe_allow_html=True)
+        else:
+            st.caption("README not found locally yet.")
+        st.caption(f"[View on GitHub →]({repo_link})")
+
+
+show_readme(
+    "NFL Performance Analytics",
+    NFL_README,
+    f"https://github.com/{GITHUB_USER}/{THIS_REPO}/tree/main/projects/nfl-analytics",
+)
+show_readme(
+    "NBA Analytics Portfolio — overview",
+    os.path.join(README_DIR, "nba-root.md"),
+    f"https://github.com/{GITHUB_USER}/NBA-Analytics-Portfolio",
+)
+show_readme(
+    "Volume vs. Elite Defenses",
+    os.path.join(README_DIR, "nba-01.md"),
+    f"https://github.com/{GITHUB_USER}/NBA-Analytics-Portfolio/tree/main/projects/01-volume-vs-elite-defenses",
+)
+show_readme(
+    "Knicks 2026 Contender Analysis",
+    os.path.join(README_DIR, "nba-02.md"),
+    f"https://github.com/{GITHUB_USER}/NBA-Analytics-Portfolio/tree/main/projects/02-knicks-contender-2026",
 )
 
 st.divider()
