@@ -28,19 +28,30 @@ if os.path.exists(_wp_path):
     with open(_wp_path, "rb") as f:
         WALLPAPER_B64 = base64.b64encode(f.read()).decode("ascii")
 
+WATERMARK_B64 = ""
+_wm_path = os.path.join(ASSETS, "logo-watermark.png")
+if os.path.exists(_wm_path):
+    with open(_wm_path, "rb") as f:
+        WATERMARK_B64 = base64.b64encode(f.read()).decode("ascii")
+
 # ---------------------------------------------------------------------------
 # Brand styling — dark navy / teal / gold, matching the A'eye visual identity
 # ---------------------------------------------------------------------------
 _CSS = """
 <style>
-.stApp { background: #0a131c; color: #eaf2f6; }
+.stApp {
+    color: #eaf2f6;
+    background:
+        url("data:image/png;base64,__WATERMARK_B64__") repeat,
+        linear-gradient(180deg, rgba(10,19,28,0.72) 0%, rgba(10,19,28,0.92) 40%, #0a131c 75%),
+        url("data:image/jpeg;base64,__WALLPAPER_B64__") center top / cover no-repeat fixed;
+    background-size: 260px, auto, cover;
+}
 .block-container { max-width: 1400px; padding-top: 1.2rem; padding-left: 2.5rem; padding-right: 2.5rem; }
 .hero-banner {
     position: relative; border-radius: 12px; overflow: hidden; margin-bottom: 1.5rem;
     border: 1px solid #25394c; padding: 40px 40px 32px;
-    background:
-        linear-gradient(180deg, rgba(10,19,28,0.55) 0%, rgba(10,19,28,0.93) 85%),
-        url("data:image/jpeg;base64,__WALLPAPER_B64__") center 30% / cover no-repeat;
+    background: linear-gradient(180deg, rgba(10,19,28,0.25) 0%, rgba(10,19,28,0.65) 100%);
 }
 h1, h2, h3 { font-family: 'Georgia', serif; letter-spacing: 0.01em; }
 h1 { color: #eaf2f6 !important; }
@@ -72,7 +83,8 @@ ul.analysis-arrows li { position: relative; padding-left: 22px; margin-bottom: 9
 ul.analysis-arrows li::before { content: "→"; position: absolute; left: 0; color: #d9b968; }
 </style>
 """
-st.markdown(_CSS.replace("__WALLPAPER_B64__", WALLPAPER_B64), unsafe_allow_html=True)
+_css_final = _CSS.replace("__WALLPAPER_B64__", WALLPAPER_B64).replace("__WATERMARK_B64__", WATERMARK_B64)
+st.markdown(_css_final, unsafe_allow_html=True)
 
 # ---------------------------------------------------------------------------
 # Hero
