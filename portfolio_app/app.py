@@ -22,12 +22,6 @@ NFL_README = os.path.join(os.path.dirname(__file__), "..", "projects", "nfl-anal
 GITHUB_USER = "gpbrou25-anal"
 THIS_REPO = "gp-portfolio"
 
-WALLPAPER_B64 = ""
-_wp_path = os.path.join(ASSETS, "wallpaper.jpg")
-if os.path.exists(_wp_path):
-    with open(_wp_path, "rb") as f:
-        WALLPAPER_B64 = base64.b64encode(f.read()).decode("ascii")
-
 WATERMARK_B64 = ""
 _wm_path = os.path.join(ASSETS, "logo-watermark.png")
 if os.path.exists(_wm_path):
@@ -35,55 +29,55 @@ if os.path.exists(_wm_path):
         WATERMARK_B64 = base64.b64encode(f.read()).decode("ascii")
 
 # ---------------------------------------------------------------------------
-# Brand styling — dark navy / teal / gold, matching the A'eye visual identity
+# Brand styling — white, with the A'eye logo as a repeating wallpaper pattern
 # ---------------------------------------------------------------------------
 _CSS = """
 <style>
 .stApp {
-    color: #eaf2f6;
+    color: #1b2630;
     background:
-        url("data:image/png;base64,__WATERMARK_B64__") repeat,
-        linear-gradient(180deg, rgba(10,19,28,0.72) 0%, rgba(10,19,28,0.92) 40%, #0a131c 75%),
-        url("data:image/jpeg;base64,__WALLPAPER_B64__") center top / cover no-repeat fixed;
-    background-size: 260px, auto, cover;
+        url("data:image/png;base64,__WATERMARK_B64__") repeat;
+    background-size: 340px;
+    background-color: #ffffff;
 }
 .block-container { max-width: 1400px; padding-top: 1.2rem; padding-left: 2.5rem; padding-right: 2.5rem; }
 .hero-banner {
     position: relative; border-radius: 12px; overflow: hidden; margin-bottom: 1.5rem;
-    border: 1px solid #25394c; padding: 40px 40px 32px;
-    background: linear-gradient(180deg, rgba(10,19,28,0.25) 0%, rgba(10,19,28,0.65) 100%);
+    border: 1px solid #dfe6ec; padding: 40px 40px 32px;
+    background: rgba(255,255,255,0.86);
+    box-shadow: 0 2px 10px rgba(20,40,60,0.06);
 }
 h1, h2, h3 { font-family: 'Georgia', serif; letter-spacing: 0.01em; }
-h1 { color: #eaf2f6 !important; }
-h2 { color: #eaf2f6 !important; border-bottom: 1px solid #25394c; padding-bottom: 10px; margin-top: 2.2rem !important; }
-p, li, span, div { color: #cdd9e1; }
-.eyebrow { font-family: monospace; font-size: 12px; letter-spacing: 0.14em; color: #45b0a8; text-transform: uppercase; }
-.sub { color: #8ea3b3; font-size: 16px; max-width: 60ch; }
-.meta-row { font-family: monospace; font-size: 13px; color: #8ea3b3; margin-top: 10px; }
-.meta-row b { color: #eaf2f6; }
+h1 { color: #1b2630 !important; }
+h2 { color: #1b2630 !important; border-bottom: 1px solid #dfe6ec; padding-bottom: 10px; margin-top: 2.2rem !important; }
+p, li, span, div { color: #33424e; }
+.eyebrow { font-family: monospace; font-size: 12px; letter-spacing: 0.14em; color: #1f8f85; text-transform: uppercase; }
+.sub { color: #5c6b78; font-size: 16px; max-width: 60ch; }
+.meta-row { font-family: monospace; font-size: 13px; color: #5c6b78; margin-top: 10px; }
+.meta-row b { color: #1b2630; }
 .tag { display:inline-block; font-family: monospace; font-size: 11px; padding: 4px 9px; margin: 3px 4px 0 0;
-       border-radius: 4px; background: #17293a; color: #8ea3b3; border: 1px solid #25394c; }
-figcaption, .stCaption, [data-testid="stCaptionContainer"] { color: #8ea3b3 !important; }
-a { color: #45b0a8; }
-hr { border-color: #25394c; }
-.slide-counter { font-family: monospace; font-size: 13px; color: #8ea3b3; text-align: center; margin-top: 10px; }
-.readme-box { background: #101e29; border: 1px solid #25394c; border-radius: 8px; padding: 18px 22px; }
+       border-radius: 4px; background: #f0f4f7; color: #5c6b78; border: 1px solid #dfe6ec; }
+figcaption, .stCaption, [data-testid="stCaptionContainer"] { color: #5c6b78 !important; }
+a { color: #1f8f85; }
+hr { border-color: #dfe6ec; }
+.slide-counter { font-family: monospace; font-size: 13px; color: #5c6b78; text-align: center; margin-top: 10px; }
+.readme-box { background: rgba(255,255,255,0.92); border: 1px solid #dfe6ec; border-radius: 8px; padding: 18px 22px; box-shadow: 0 1px 6px rgba(20,40,60,0.05); }
 .readme-box h1, .readme-box h2, .readme-box h3 { border-bottom: none; margin-top: 0.8rem !important; font-family: 'Georgia', serif; }
-[data-testid="stExpander"] { background: #101e29; border: 1px solid #25394c; border-radius: 8px; }
-.analysis-block { background: #101e29; border: 1px solid #25394c; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px; }
-.analysis-block h3 { margin: 0 0 4px 0 !important; font-size: 19px; color: #eaf2f6; }
-.analysis-score { font-family: monospace; font-size: 12.5px; color: #d9b968; letter-spacing: 0.04em; margin-bottom: 14px; }
+[data-testid="stExpander"] { background: rgba(255,255,255,0.92); border: 1px solid #dfe6ec; border-radius: 8px; }
+.analysis-block { background: rgba(255,255,255,0.92); border: 1px solid #dfe6ec; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px; box-shadow: 0 1px 6px rgba(20,40,60,0.05); }
+.analysis-block h3 { margin: 0 0 4px 0 !important; font-size: 19px; color: #1b2630; }
+.analysis-score { font-family: monospace; font-size: 12.5px; color: #a97c23; letter-spacing: 0.04em; margin-bottom: 14px; }
 .analysis-block p { margin: 0 0 12px 0; line-height: 1.6; }
-.analysis-sub { font-family: monospace; font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #45b0a8; margin: 16px 0 8px; }
+.analysis-sub { font-family: monospace; font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #1f8f85; margin: 16px 0 8px; }
 ul.analysis-bullets { list-style: none; margin: 0 0 14px 0; padding: 0; }
-ul.analysis-bullets li { position: relative; padding-left: 18px; margin-bottom: 9px; line-height: 1.55; color: #cdd9e1; }
-ul.analysis-bullets li::before { content: "•"; position: absolute; left: 0; color: #45b0a8; }
+ul.analysis-bullets li { position: relative; padding-left: 18px; margin-bottom: 9px; line-height: 1.55; color: #33424e; }
+ul.analysis-bullets li::before { content: "•"; position: absolute; left: 0; color: #1f8f85; }
 ul.analysis-arrows { list-style: none; margin: 0 0 14px 0; padding: 0; }
-ul.analysis-arrows li { position: relative; padding-left: 22px; margin-bottom: 9px; line-height: 1.55; color: #cdd9e1; }
-ul.analysis-arrows li::before { content: "→"; position: absolute; left: 0; color: #d9b968; }
+ul.analysis-arrows li { position: relative; padding-left: 22px; margin-bottom: 9px; line-height: 1.55; color: #33424e; }
+ul.analysis-arrows li::before { content: "→"; position: absolute; left: 0; color: #a97c23; }
 </style>
 """
-_css_final = _CSS.replace("__WALLPAPER_B64__", WALLPAPER_B64).replace("__WATERMARK_B64__", WATERMARK_B64)
+_css_final = _CSS.replace("__WATERMARK_B64__", WATERMARK_B64)
 st.markdown(_css_final, unsafe_allow_html=True)
 
 # ---------------------------------------------------------------------------
@@ -290,8 +284,8 @@ def _inline_image_tag(fname, figures_dir, alt):
         b64 = base64.b64encode(f.read()).decode("ascii")
     return (
         f'\n\n<img src="data:image/{mime};base64,{b64}" alt="{alt}" '
-        f'style="max-width:100%;border-radius:6px;margin:10px 0;border:1px solid #25394c;"/>'
-        f'\n\n<div style="font-size:12.5px;color:#8ea3b3;margin:-6px 0 10px;">{alt}</div>\n\n'
+        f'style="max-width:100%;border-radius:6px;margin:10px 0;border:1px solid #dfe6ec;"/>'
+        f'\n\n<div style="font-size:12.5px;color:#5c6b78;margin:-6px 0 10px;">{alt}</div>\n\n'
     )
 
 
