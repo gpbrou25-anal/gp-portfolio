@@ -234,30 +234,7 @@ st.divider()
 # 02 — Carousels
 # ---------------------------------------------------------------------------
 st.markdown("## 02 · Carousels")
-
-st.markdown(
-    '<div class="analysis-block">'
-    "<p>Four games into the 2026 NFL season, so I pulled the numbers and broke down what's actually "
-    "happening.</p>"
-    "<p>Built through \"Analytics eye,\" my multisport analytics project covering football, "
-    "basketball, and American football for this one. I pulled real play-by-play data "
-    "(nflverse/nflfastR), Next Gen Stats, PFR, and FTN charting, ran it through my own Streamlit app, "
-    "and turned it into this overview.</p>"
-    '<div class="analysis-sub">What\'s in it</div>'
-    + bullets([
-        "Teams that changed coaches this offseason — who's actually winning with the new staff, who "
-        "isn't",
-        "Teams playing well right now: explosive run games, defenses taking the ball away",
-        "Teams showing both sides: strong in one area, exposed in the other",
-        "Teams still searching for their first win",
-    ], arrows=True)
-    + "<p>Every number here is pulled straight from the data, nothing guessed or estimated.</p>"
-    "<p>This is just the overview, next time, a different sport or a deeper cut into one position "
-    "group.</p>"
-    '<span class="tag">A\'eye Multisport Analytics Insights</span>'
-    "</div>",
-    unsafe_allow_html=True,
-)
+st.caption("NFL Performance Analytics — the write-up is in Projects below, this is just the carousel.")
 
 carousels = []
 if os.path.isdir(CAROUSEL_DIR):
@@ -357,11 +334,40 @@ def show_readme(title, path, repo_link, figures_dir=None):
         st.caption(f"[View on GitHub →]({repo_link})")
 
 
-show_readme(
-    "NFL Performance Analytics",
-    NFL_README,
-    f"https://github.com/{GITHUB_USER}/{THIS_REPO}/tree/main/projects/nfl-analytics",
-)
+with st.expander("NFL Performance Analytics", expanded=False):
+    st.markdown(
+        '<div class="readme-box">'
+        "<p>Four games into the 2026 NFL season, so I pulled the numbers and broke down what's "
+        "actually happening.</p>"
+        "<p>Built through \"Analytics eye,\" my multisport analytics project covering football, "
+        "basketball, and American football for this one. I pulled real play-by-play data "
+        "(nflverse/nflfastR), Next Gen Stats, PFR, and FTN charting, ran it through my own Streamlit "
+        "app, and turned it into the carousel above.</p>"
+        '<div class="analysis-sub">What\'s in it</div>'
+        + bullets([
+            "Teams that changed coaches this offseason — who's actually winning with the new staff, "
+            "who isn't",
+            "Teams playing well right now: explosive run games, defenses taking the ball away",
+            "Teams showing both sides: strong in one area, exposed in the other",
+            "Teams still searching for their first win",
+        ], arrows=True)
+        + "<p>Every number here is pulled straight from the data, nothing guessed or estimated.</p>"
+        "</div>",
+        unsafe_allow_html=True,
+    )
+    _diag_path = os.path.join(README_DIR, "nfl-diagnostic-screen.jpg")
+    if os.path.exists(_diag_path):
+        st.image(_diag_path, use_container_width=True)
+        st.caption(
+            "The full diagnostic behind the carousel — point differential, defensive touchdowns, "
+            "offense/defense quadrants and more, all 32 teams, refreshed every week. There's a lot "
+            "more to explore here as the season goes on, this overview is just the entry point."
+        )
+    st.caption(
+        f"[View the full project on GitHub →]"
+        f"(https://github.com/{GITHUB_USER}/{THIS_REPO}/tree/main/projects/nfl-analytics)"
+    )
+
 show_readme(
     "Volume vs. Elite Defenses",
     os.path.join(README_DIR, "nba-01.md"),
