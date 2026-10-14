@@ -166,7 +166,7 @@ def show_clips(group):
             f"as `{group} | https://www.linkedin.com/posts/...`."
         )
         return
-    st.link_button("View the full breakdown on LinkedIn →", url)
+    st.link_button("Go through this link to see the clip →", url)
 
 
 # --- Analysis 1: Saka's corners from the right -----------------------------
