@@ -1,0 +1,3 @@
+# Format: group | title | url
+# Lines starting with # are ignored. Only clips still live on YouTube go here.
+corners | Near post corner breakdown | https://youtu.be/zA4ZOZzPfME

@@ -151,6 +151,20 @@ if os.path.exists(li_path):
                 group, url = parts
                 li_by_group[group] = url
 
+# YouTube links that are still live — one per line in youtube_links.txt: "group | title | url"
+yt_by_group = {}
+yt_path = os.path.join(VIDEO_DIR, "youtube_links.txt")
+if os.path.exists(yt_path):
+    with open(yt_path, "r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line or line.startswith("#"):
+                continue
+            parts = [p.strip() for p in line.split("|")]
+            if len(parts) == 3:
+                group, title, url = parts
+                yt_by_group.setdefault(group, []).append((title, url))
+
 
 def bullets(items, arrows=False):
     cls = "analysis-arrows" if arrows else "analysis-bullets"
@@ -159,14 +173,25 @@ def bullets(items, arrows=False):
 
 
 def show_clips(group):
-    url = li_by_group.get(group)
-    if not url:
+    clips = yt_by_group.get(group, [])
+    li_url = li_by_group.get(group)
+
+    if clips:
+        cols = st.columns(min(2, len(clips)))
+        for i, (title, url) in enumerate(clips):
+            with cols[i % len(cols)]:
+                st.video(url)
+                if title:
+                    st.caption(title)
+
+    if li_url:
+        label = "Or see it on LinkedIn →" if clips else "Go through this link to see the clip →"
+        st.link_button(label, li_url)
+    elif not clips:
         st.caption(
-            f"No LinkedIn link yet. Add a line to `portfolio_app/assets/videos/linkedin_links.txt` "
+            f"No link yet. Add a line to `portfolio_app/assets/videos/linkedin_links.txt` "
             f"as `{group} | https://www.linkedin.com/posts/...`."
         )
-        return
-    st.link_button("Go through this link to see the clip →", url)
 
 
 # --- Analysis 1: Saka's corners from the right -----------------------------
