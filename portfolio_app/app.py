@@ -137,32 +137,19 @@ st.divider()
 # ---------------------------------------------------------------------------
 st.markdown("## 01 · Video breakdown")
 
-# YouTube links — one per line in youtube_links.txt: "group | title | url"
-yt_by_group = {}
-yt_path = os.path.join(VIDEO_DIR, "youtube_links.txt")
-if os.path.exists(yt_path):
-    with open(yt_path, "r", encoding="utf-8") as f:
+# LinkedIn posts — one per line in linkedin_links.txt: "group | url"
+li_by_group = {}
+li_path = os.path.join(VIDEO_DIR, "linkedin_links.txt")
+if os.path.exists(li_path):
+    with open(li_path, "r", encoding="utf-8") as f:
         for line in f:
             line = line.strip()
             if not line or line.startswith("#"):
                 continue
             parts = [p.strip() for p in line.split("|")]
-            if len(parts) == 3:
-                group, title, url = parts
-            elif len(parts) == 2:
-                group, title, url = "corners", parts[0], parts[1]
-            else:
-                group, title, url = "corners", None, parts[0]
-            yt_by_group.setdefault(group, []).append((title, url))
-
-# local files always go under "corners" by default
-video_files = []
-if os.path.isdir(VIDEO_DIR):
-    video_files = sorted(
-        f for f in os.listdir(VIDEO_DIR) if f.lower().endswith((".mp4", ".mov", ".webm"))
-    )
-for vf in video_files:
-    yt_by_group.setdefault("corners", []).append((vf, os.path.join(VIDEO_DIR, vf)))
+            if len(parts) == 2:
+                group, url = parts
+                li_by_group[group] = url
 
 
 def bullets(items, arrows=False):
@@ -172,19 +159,14 @@ def bullets(items, arrows=False):
 
 
 def show_clips(group):
-    clips = yt_by_group.get(group, [])
-    if not clips:
+    url = li_by_group.get(group)
+    if not url:
         st.caption(
-            f"No clip yet for this one. Add a line to `portfolio_app/assets/videos/youtube_links.txt` "
-            f"as `{group} | Title | https://youtu.be/...`."
+            f"No LinkedIn link yet. Add a line to `portfolio_app/assets/videos/linkedin_links.txt` "
+            f"as `{group} | https://www.linkedin.com/posts/...`."
         )
         return
-    cols = st.columns(min(2, len(clips)))
-    for i, (title, url) in enumerate(clips):
-        with cols[i % len(cols)]:
-            st.video(url)
-            if title:
-                st.caption(title)
+    st.link_button("View the full breakdown on LinkedIn →", url)
 
 
 # --- Analysis 1: Saka's corners from the right -----------------------------

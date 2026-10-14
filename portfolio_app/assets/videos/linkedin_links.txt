@@ -1,0 +1,4 @@
+# Format: group | url
+# Lines starting with # are ignored. Groups used right now: corners, brighton
+# corners | https://www.linkedin.com/posts/your-post-here
+# brighton | https://www.linkedin.com/posts/your-post-here

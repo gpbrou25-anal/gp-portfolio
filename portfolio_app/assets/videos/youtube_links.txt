@@ -1,4 +1,0 @@
-# Format: group | title | url
-# Lines starting with # are ignored. Groups used right now: corners, brighton
-corners | Near post corner breakdown | https://youtu.be/zA4ZOZzPfME
-brighton | Brighton 3-0 Arsenal, first goal | https://youtu.be/4Z6jQWe7L1k
