@@ -265,6 +265,31 @@ st.markdown(
 )
 show_clips("brighton")
 
+# --- Analysis 3: LA Rams, six weeks in (motion design + cloned voice) --------
+st.markdown(
+    '<div class="analysis-block">'
+    "<h3>LA Rams: two wins away</h3>"
+    '<div class="analysis-score">NFL 2026 · WEEK 6 · LOS ANGELES RAMS 2–4 · MOTION DESIGN BREAKDOWN</div>'
+    "<p>The Rams were supposed to be the team to beat.</p>"
+    "<p>Six weeks in, they're 2–4.</p>"
+    "<p>But they've been outscored by only 3 points all season. So what's really going on?</p>"
+    "<p>I went through the numbers. Some of it surprised me:</p>"
+    + bullets([
+        "One quarter that keeps costing them games",
+        "A weapon they're barely using",
+    ])
+    + "<p>Two wins away from where they should be, and the gap is just a few plays. A third quarter "
+    "here, one blocked kick there.</p>"
+    '<span class="tag">Built in Python + Remotion · narrated with my cloned voice</span>'
+    "</div>",
+    unsafe_allow_html=True,
+)
+_rams_video = os.path.join(VIDEO_DIR, "rams-overview.mp4")
+if os.path.exists(_rams_video):
+    st.video(_rams_video)
+if li_by_group.get("rams"):
+    st.link_button("Or see it on LinkedIn →", li_by_group["rams"])
+
 st.divider()
 
 def render_carousel(name):
