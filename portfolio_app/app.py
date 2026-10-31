@@ -290,6 +290,32 @@ if os.path.exists(_rams_video):
 if li_by_group.get("rams"):
     st.link_button("Or see it on LinkedIn →", li_by_group["rams"])
 
+# --- Analysis 4: Luka Dončić, first four games (motion design + his own voice) -
+st.markdown(
+    '<div class="analysis-block">'
+    "<h3>Luka Dončić: where, when, how</h3>"
+    '<div class="analysis-score">NBA 2026–27 · FIRST 4 GAMES · LOS ANGELES LAKERS · MOTION DESIGN BREAKDOWN</div>'
+    "<p>Luka Dončić is looking like a potential MVP in this first week of the regular season: "
+    "144 points in four games.</p>"
+    "<p>The points are one story. How he gets them is another, and that's probably what the "
+    "analytics staff of the other 29 teams are looking at right now.</p>"
+    "<p>So I broke down his shots from the Lakers' first four games:</p>"
+    + bullets([
+        "Where he shoots from",
+        "When he takes his shots",
+        "How: the shots he leans on",
+    ])
+    + "<p>To slow down a player like Luka, you first need to know his habits.</p>"
+    '<span class="tag">Built in Python + Remotion · narrated with my own voice</span>'
+    "</div>",
+    unsafe_allow_html=True,
+)
+_luka_video = os.path.join(VIDEO_DIR, "luka-shots.mp4")
+if os.path.exists(_luka_video):
+    st.video(_luka_video)
+if li_by_group.get("luka"):
+    st.link_button("Or see it on LinkedIn →", li_by_group["luka"])
+
 st.divider()
 
 def render_carousel(name):
