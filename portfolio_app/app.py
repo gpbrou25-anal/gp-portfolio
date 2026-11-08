@@ -128,8 +128,8 @@ st.markdown(
     '<div><span class="k">Email</span><a href="mailto:gbottobrou@gmail.com">gbottobrou@gmail.com</a></div>'
     '<div><span class="k">Phone</span><a href="tel:+34667405535">+34 667 405 535</a></div>'
     '<div><span class="k">LinkedIn</span>'
-    '<a href="https://www.linkedin.com/in/georges-brou-bb68b9281/" target="_blank">'
-    'linkedin.com/in/georges-brou</a></div>'
+    '<a href="https://www.linkedin.com/in/georges-patrick-brou-bb68b9281/" target="_blank">'
+    'linkedin.com/in/georges-patrick-brou</a></div>'
     '</div>'
     '</div></div>',
     unsafe_allow_html=True,
@@ -323,6 +323,33 @@ if os.path.exists(_luka_video):
 if li_by_group.get("luka"):
     st.link_button("Or see it on LinkedIn →", li_by_group["luka"])
 
+# --- Analysis 5: Man City, two conceded goals that look alike ----------------
+st.markdown(
+    '<div class="analysis-block">'
+    "<h3>Copy. Copy.</h3>"
+    '<div class="analysis-score">2026/27 · MANCHESTER CITY · ASTON VILLA &amp; PSG · DEFENSIVE ANALYSIS</div>'
+    "<p>Two goals Manchester City conceded, one against Aston Villa and one against PSG. Different "
+    "games, different opponents, but they look very similar.</p>"
+    + bullets([
+        "<b>A late press.</b> Some players jump, others stay, and there's space in the middle. The "
+        "pressure never arrives together.",
+        "<b>One pass, two lines gone.</b> A single pass takes the front and midfield lines out of the "
+        "game, and City end up running back behind the ball.",
+        "<b>A last line in trouble.</b> It doesn't know when to step up or who to take, so it keeps "
+        "dropping toward goal.",
+        "<b>The play switches sides.</b> The attack starts down one sideline and ends up on the "
+        "opposite side of the pitch.",
+        "<b>The same finish.</b> A near-post shot that isn't closed down in time, and Donnarumma "
+        "pushes off the wrong foot both times.",
+    ])
+    + "<p>Two goals aren't a trend yet. But when they look this alike, it's worth a closer look.</p>"
+    '<span class="tag">Built in Wyscout</span>'
+    "</div>",
+    unsafe_allow_html=True,
+)
+if li_by_group.get("city"):
+    st.link_button("Watch the breakdown on LinkedIn →", li_by_group["city"])
+
 st.divider()
 
 def render_carousel(name):
@@ -452,6 +479,59 @@ show_readme(
     f"https://github.com/{GITHUB_USER}/NBA-Analytics-Portfolio/tree/main/projects/02-knicks-contender-2026",
     figures_dir=os.path.join(README_DIR, "figures-02"),
 )
+
+st.divider()
+
+# ---------------------------------------------------------------------------
+# 03 — Tools I built (the workflow behind the analysis)
+# ---------------------------------------------------------------------------
+st.markdown("## 03 · Tools I built")
+st.write("The tools I use every week to tag, analyse and present games, all built from scratch.")
+
+TOOLS_DIR = os.path.join(os.path.dirname(__file__), "assets", "tools")
+TOOLS = [
+    ("Match Studio: from a full match to a coach report", "match-studio.jpg",
+     "<p>Watch a match on YouTube, tag every moment for both teams with keyboard shortcuts, then work "
+     "through it in three passes: the whole game, the phases and patterns, and lenses borrowed from "
+     "other sports. It ends in a coach's report, as a web page and a PDF, in Spanish, Catalan or "
+     "English.</p>"
+     "<p>First full match: Inter Barcelona vs CF Barceloneta (Segona Catalana), "
+     "<b>309 moments tagged</b> over 90 minutes.</p>",
+     "Python + Streamlit"),
+    ("Match Tagger: live tagging from the stands", "match-tagger.jpg",
+     "<p>An iPad app for amateur games: tag live from the stands, or from the video afterwards. The "
+     "match clock follows each half, every moment gets its video time so clips are easy to find, and "
+     "each game exports to a CSV for the season file.</p>",
+     "HTML + JavaScript"),
+    ("Tactical Board: a book of tactical pages", "tactical-board.jpg",
+     "<p>Every page is a board. Real squads for the 96 clubs of the big five leagues, checked against "
+     "two sources, zone grids (lanes, half-spaces, thirds), analyst drawing tools and animated clips "
+     "exported for LinkedIn.</p>",
+     "HTML + JavaScript"),
+    ("Player Duel: who fits best beside Rice?", "player-duel.jpg",
+     "<p>A reusable comparison app running on Wyscout exports. First question: Lewis-Skelly or Bruno "
+     "Guimarães beside Declan Rice, across Arsenal's 15 games, per 90 minutes and by opponent style. "
+     "Every number is checked by an independent audit script before it's shown.</p>",
+     "Python + Streamlit · Wyscout exports"),
+    ("F1 Data Room: the 2026 season", "f1-data-room.jpg",
+     "<p>19 pages across the season, qualifying, race day, strategy and reliability, built on "
+     "Jolpica-F1 and OpenF1 data. Includes my own metric, <b>laps to catch</b> (gap divided by pace "
+     "difference), checked against real laps. Every total is audited against the official "
+     "standings.</p>",
+     "Python + Streamlit"),
+    ("NBA Shot Database", "nba-shots.jpg",
+     "<p>Every shot of the 2026-27 season with its location, zone and expected points, from NBA.com, "
+     "with ESPN box scores as a second source. <b>21,334 shots</b> checked against the box scores "
+     "before any number goes into a post.</p>",
+     "Python + Streamlit"),
+]
+for title, img, body, tag in TOOLS:
+    with st.expander(title, expanded=False):
+        st.markdown(f'<div class="readme-box">{body}<span class="tag">{tag}</span></div>',
+                    unsafe_allow_html=True)
+        _p = os.path.join(TOOLS_DIR, img)
+        if os.path.exists(_p):
+            st.image(_p, use_container_width=True)
 
 st.divider()
 st.caption("Georges-Patrick Brou · Barcelona, Spain · gbottobrou@gmail.com · +34 667 405 535")
