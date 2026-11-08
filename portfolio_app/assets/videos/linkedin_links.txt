@@ -1,4 +1,6 @@
 # Format: group | url
-# Lines starting with # are ignored. Groups used right now: corners, brighton, rams, luka
+# Lines starting with # are ignored. Groups used right now: corners, brighton, rams, luka, city, nfl-week7, broncos-seahawks
 corners | https://lnkd.in/p/ewa-BYCy
 brighton | https://lnkd.in/p/eu69FeZa
+nfl-week7 | https://lnkd.in/p/ebFH2iZz
+broncos-seahawks | https://lnkd.in/p/eXTqjTb5

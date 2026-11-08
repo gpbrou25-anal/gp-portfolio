@@ -128,8 +128,8 @@ st.markdown(
     '<div><span class="k">Email</span><a href="mailto:gbottobrou@gmail.com">gbottobrou@gmail.com</a></div>'
     '<div><span class="k">Phone</span><a href="tel:+34667405535">+34 667 405 535</a></div>'
     '<div><span class="k">LinkedIn</span>'
-    '<a href="https://www.linkedin.com/in/georges-patrick-brou-bb68b9281/" target="_blank">'
-    'linkedin.com/in/georges-patrick-brou</a></div>'
+    '<a href="https://www.linkedin.com/in/georges-brou-bb68b9281/" target="_blank">'
+    'linkedin.com/in/georges-brou</a></div>'
     '</div>'
     '</div></div>',
     unsafe_allow_html=True,
@@ -466,6 +466,52 @@ with st.expander("NFL Performance Analytics", expanded=False):
         f"[View the full project on GitHub →]"
         f"(https://github.com/{GITHUB_USER}/{THIS_REPO}/tree/main/projects/nfl-analytics)"
     )
+
+with st.expander("NFL Week 7: a bit of everything", expanded=False):
+    st.markdown(
+        '<div class="readme-box">'
+        "<p>Week 7 had a bit of everything. Two unbeaten teams went down, one stayed perfect, and "
+        "another finally got its first win of the season.</p>"
+        '<div class="analysis-sub">Inside the carousel</div>'
+        + bullets([
+            "The massive work of the Atlanta Falcons and Seattle Seahawks defenses against two of the "
+            "league's best offenses",
+            "The winning factor behind the Minnesota Vikings' 6-0 start",
+            "News from two teams below .500: a first win for one, a fourth straight loss for the other",
+        ], arrows=True)
+        + "<p>Every number verified. Source: nflverse play-by-play, NFL Next Gen Stats and FTN "
+        "charting, checked against ESPN box scores.</p>"
+        "</div>",
+        unsafe_allow_html=True,
+    )
+    if li_by_group.get("nfl-week7"):
+        st.link_button("See the carousel on LinkedIn →", li_by_group["nfl-week7"])
+
+with st.expander("Broncos D vs Seahawks D: two defenses built differently", expanded=False):
+    st.markdown(
+        '<div class="readme-box">'
+        "<p>Seahawks at Broncos on Thursday Night Football, and their defenses are built completely "
+        "differently. I broke both down using this season's real play-by-play data: pass rush, run "
+        "defense, tackling, turnovers, blitz tendencies.</p>"
+        '<div class="analysis-sub">Seattle</div>'
+        + bullets([
+            "Linebackers and defensive backs both miss tackles under 10% of the time",
+            "Lowest yards allowed per target in the entire NFL",
+            "Barely blitzes, but it actually works when they do",
+        ], arrows=True)
+        + '<div class="analysis-sub">Denver</div>'
+        + bullets([
+            "Pass rush barely needs a blitz to get home, one lineman already has 4 sacks",
+            "Defensive backs miss tackles nearly 1 in 5 times",
+            "Run defense ranks 25th in the league",
+        ], arrows=True)
+        + "<p>The real question: can Seattle turn Denver's missed tackles into yards, and can Denver's "
+        "front get home before that matters?</p>"
+        "</div>",
+        unsafe_allow_html=True,
+    )
+    if li_by_group.get("broncos-seahawks"):
+        st.link_button("See the carousel on LinkedIn →", li_by_group["broncos-seahawks"])
 
 show_readme(
     "Volume vs. Elite Defenses",
