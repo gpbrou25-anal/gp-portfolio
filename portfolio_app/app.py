@@ -326,7 +326,7 @@ if li_by_group.get("luka"):
 # --- Analysis 5: Man City, two conceded goals that look alike ----------------
 st.markdown(
     '<div class="analysis-block">'
-    "<h3>Copy. Copy.</h3>"
+    "<h3>Manchester City: two goals that look alike</h3>"
     '<div class="analysis-score">2026/27 · MANCHESTER CITY · ASTON VILLA &amp; PSG · DEFENSIVE ANALYSIS</div>'
     "<p>Two goals Manchester City conceded, one against Aston Villa and one against PSG. Different "
     "games, different opponents, but they look very similar.</p>"
