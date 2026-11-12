@@ -513,6 +513,38 @@ with st.expander("Broncos D vs Seahawks D: two defenses built differently", expa
     if li_by_group.get("broncos-seahawks"):
         st.link_button("See the carousel on LinkedIn →", li_by_group["broncos-seahawks"])
 
+with st.expander("NFL Madrid Game: Bengals 34, Falcons 17 (I was there)", expanded=False):
+    st.markdown(
+        '<div class="readme-box">'
+        "<p>My first ever NFL game, live at the Estadio Santiago Bernabéu in Madrid (week 9, 8 November "
+        "2026). I did a quick breakdown of the game, and the data matched what we saw from the stands.</p>"
+        '<div class="analysis-sub">Joe Burrow (QB)</div>'
+        + bullets([
+            "24 of 29 passes completed (82.8%), his best of the season and the best of any quarterback "
+            "in week 9",
+            "6th straight game above 70%, rising three weeks in a row: 73.3%, 77.6%, 82.8%",
+            "12 touchdown passes in his last 3 games",
+        ], arrows=True)
+        + '<div class="analysis-sub">His receiver duo</div>'
+        + bullets([
+            "Ja'Marr Chase (WR): 142 yards in the first half alone, including a 47-yard touchdown on "
+            "the Bengals' first 3rd down of the game",
+            "Tee Higgins (WR): the finisher, 2 targets in the red zone, 2 touchdowns",
+        ], arrows=True)
+        + '<div class="analysis-sub">On the other side</div>'
+        + bullets([
+            "The Atlanta Falcons ran the ball well: 6.5 yards per carry",
+            "But one of the cleanest teams in the league gave away 12 penalties, double its usual",
+        ], arrows=True)
+        + "<p>Built in my own Streamlit app from nflverse play-by-play, NFL Next Gen Stats, PFR and FTN "
+        "charting, every number checked against the ESPN box score.</p>"
+        "</div>",
+        unsafe_allow_html=True,
+    )
+    render_carousel("madrid-game")
+    if li_by_group.get("madrid"):
+        st.link_button("See the post on LinkedIn →", li_by_group["madrid"])
+
 show_readme(
     "Volume vs. Elite Defenses",
     os.path.join(README_DIR, "nba-01.md"),
