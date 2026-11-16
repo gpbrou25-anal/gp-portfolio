@@ -1,0 +1,62 @@
+# Keeps the portfolio on Streamlit Community Cloud awake, so a recruiter never lands on the "app is asleep" page.
+# A real browser opens the app every 4 hours; if it is asleep, it clicks the wake button and waits until it loads.
+# Once a month it commits a timestamp, because GitHub switches off scheduled jobs in repos with 60 days of no activity.
+name: Keep portfolio awake
+
+on:
+  schedule:
+    - cron: "17 */4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  wake:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install a browser
+        run: |
+          pip install playwright==1.48.0
+          python -m playwright install --with-deps chromium
+      - name: Open the portfolio and wake it if needed
+        shell: python
+        run: |
+          from playwright.sync_api import sync_playwright
+          URL = "https://uqzzviwdgwvejwtmpq3bgj.streamlit.app/"
+          with sync_playwright() as p:
+              page = p.chromium.launch().new_page()
+              page.goto(URL, timeout=90000)
+              page.wait_for_timeout(8000)
+              btn = page.get_by_text("Yes, get this app back up")
+              if btn.count():
+                  print("App was asleep, waking it up")
+                  btn.first.click()
+                  page.wait_for_timeout(90000)
+              else:
+                  print("App was awake")
+              print("Page title:", page.title())
+
+  monthly-heartbeat:
+    if: github.event.schedule == '17 */4 * * *'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Skip unless first run of the month
+        id: check
+        run: |
+          if [ "$(date -u +%d)" = "01" ] && [ "$(date -u +%H)" = "00" ]; then echo "go=yes" >> "$GITHUB_OUTPUT"; fi
+      - uses: actions/checkout@v4
+        if: steps.check.outputs.go == 'yes'
+      - name: Commit a timestamp so GitHub keeps the schedule on
+        if: steps.check.outputs.go == 'yes'
+        run: |
+          date -u > .github/last_wake.txt
+          git config user.name "portfolio-keepalive"
+          git config user.email "actions@users.noreply.github.com"
+          git add .github/last_wake.txt
+          git commit -m "Monthly heartbeat to keep the wake-up schedule on"
+          git push
